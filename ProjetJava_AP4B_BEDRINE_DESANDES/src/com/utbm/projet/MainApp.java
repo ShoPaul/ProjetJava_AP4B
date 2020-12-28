@@ -10,7 +10,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
@@ -24,10 +23,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class MainApp extends Application {
 	
@@ -38,11 +34,11 @@ public class MainApp extends Application {
 	private HBox secondButtonRange = new HBox(5);
 	private HBox economyLabels = new HBox(50);
 	private HBox dateLabels = new HBox(20);
-	private Button researchButton = new Button("Research");
-	private Button popButton = new Button("Population");
-	private Button cultureButton = new Button("Culture");
-	private Button medecineButton= new Button("Medecine");
-	private Button leaderButton = new Button("Leader");
+	private Research res = new Research ();
+	private Culture clt = new Culture ();
+	private Leader lead = new Leader ();
+	private Medecine med = new Medecine ();
+	private Population pop = new Population ();
 	
 	private Planet planet = new Planet();
 
@@ -78,7 +74,6 @@ public class MainApp extends Application {
 
 		// Show the window
 		primaryStage.show();
-
 	}
 
 	private void setTopComponents() {
@@ -116,32 +111,10 @@ public class MainApp extends Application {
 	}
 
 	private void setBottomComponents() {
-		Double buttonSize = 100.0;
-		
-		// Create a square for menu's buttons
-		Rectangle r =new Rectangle();
-		r.setX(50);
-		r.setY(50);
-		r.setWidth(200);
-		r.setHeight(200);
-		r.setArcHeight(20);
-		r.setArcWidth(20);
-	
-		// Set the square shape and Minimum Size
-		researchButton.setShape(r);
-		researchButton.setMinSize(buttonSize, buttonSize);
-		popButton.setShape(r);
-		popButton.setMinSize(buttonSize, buttonSize);
-		cultureButton.setShape(r);
-		cultureButton.setMinSize(buttonSize, buttonSize);
-		medecineButton.setShape(r);
-		medecineButton.setMinSize(buttonSize, buttonSize);
-		leaderButton.setShape(r);
-		leaderButton.setMinSize(buttonSize, buttonSize);
 
 		// Add buttons to two HBoxs
-		firstButtonRange.getChildren().addAll(researchButton, popButton, cultureButton);
-		secondButtonRange.getChildren().addAll(medecineButton, leaderButton);
+		firstButtonRange.getChildren().addAll(res.button, pop.button, clt.button);
+		secondButtonRange.getChildren().addAll(med.button, lead.button);
 		
 		// Set HBoxs's components alignment to the center
 		firstButtonRange.setAlignment(Pos.CENTER);
