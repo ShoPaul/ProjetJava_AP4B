@@ -1,8 +1,8 @@
 package com.utbm.projet;
 
-import java.util.*;
-
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -14,6 +14,7 @@ public class Economy {
 	public Label diazoteLabel;
 	public Label hydrogeneLabel;
 	public Label oxygeneLabel;
+	public HBox economyLabels = new HBox(50);
 	
 	private int carboneNumber;
 	private int diazoteNumber;
@@ -52,6 +53,8 @@ public class Economy {
 		oxygeneLabel.setText("Oxygene :	" + oxygeneNumber);
 		oxygeneLabel.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 12));
 		oxygeneLabel.setTextFill(Color.WHITE);
-    	    	
+    	
+		economyLabels.getChildren().addAll(carboneLabel, diazoteLabel, hydrogeneLabel, oxygeneLabel);
+		economyLabels.setAlignment(Pos.CENTER);
     }
 }

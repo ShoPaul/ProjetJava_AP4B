@@ -10,8 +10,10 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -22,6 +24,7 @@ public class Time {
 	public Label month;
 	public Label day;
 	public Label clock;
+	public HBox dateLabels = new HBox(20);
 	
 	Time (){
 		DropShadow dropShadow = new DropShadow();
@@ -64,5 +67,8 @@ public class Time {
 
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
+		
+		dateLabels.getChildren().addAll(month, day, clock);
+		dateLabels.setAlignment(Pos.CENTER);
 	}
 }
