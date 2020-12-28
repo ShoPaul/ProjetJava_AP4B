@@ -41,24 +41,16 @@ public class MainApp extends Application {
 	private VBox presentation = new VBox(20);
 	private HBox firstButtonRange = new HBox(5);
 	private HBox secondButtonRange = new HBox(5);
-	private HBox economyLabels = new HBox(150);
+	private HBox economyLabels = new HBox(50);
 	private HBox dateLabels = new HBox(20);
 	private Button researchButton = new Button("Research");
 	private Button popButton = new Button("Population");
 	private Button cultureButton = new Button("Culture");
 	private Button medecineButton= new Button("Medecine");
 	private Button leaderButton = new Button("Leader");
-	private Label carboneLabel = new Label();
-	private Label diazoteLabel = new Label();
-	private Label hydrogeneLabel = new Label();
-	private Label oxygeneLabel = new Label();
 	private Label monthLabel = new Label();
 	private Label numberOfTheDayLabel = new Label();
 	private Label actualTime = new Label();
-	private int carboneNumber = 1000000;
-	private int diazoteNumber = 1050000;
-	private int hydrogeneNumber = 10165000;
-	private int oxygeneNumber = 10560;
 	
 	private Planet planet = new Planet();
 
@@ -106,19 +98,7 @@ public class MainApp extends Application {
 		dropShadow.setOffsetY(3.0);
 		dropShadow.setColor(Color.color(0.4, 0.5, 0.5));
 		
-		// Fix the text for different resources
-		carboneLabel.setText("Carbone :		" + carboneNumber);
-		carboneLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 12));
-		carboneLabel.setTextFill(Color.WHITE);
-		diazoteLabel.setText("Diazote :		" + diazoteNumber);
-		diazoteLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 12));
-		diazoteLabel.setTextFill(Color.WHITE);
-		hydrogeneLabel.setText("Hydrogene :		" + hydrogeneNumber);
-		hydrogeneLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 12));
-		hydrogeneLabel.setTextFill(Color.WHITE);
-		oxygeneLabel.setText("Oxygene :		" + oxygeneNumber);
-		oxygeneLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 12));
-		oxygeneLabel.setTextFill(Color.WHITE);
+		Economy Eco = new Economy (50,50,50,50);
 		
 		// Create Time labels
 		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(200), new EventHandler<ActionEvent>() {
@@ -159,7 +139,7 @@ public class MainApp extends Application {
 		dateLabels.setAlignment(Pos.CENTER);
 		
 		// Resources HBox
-		economyLabels.getChildren().addAll(carboneLabel, diazoteLabel, hydrogeneLabel, oxygeneLabel);
+		economyLabels.getChildren().addAll(Eco.carboneLabel, Eco.diazoteLabel, Eco.hydrogeneLabel, Eco.oxygeneLabel);
 		economyLabels.setAlignment(Pos.CENTER);
 		
 		// Resources, Time and planet info in the VBox presentation
