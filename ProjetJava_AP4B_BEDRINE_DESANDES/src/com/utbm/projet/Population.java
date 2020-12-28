@@ -2,11 +2,17 @@ package com.utbm.projet;
 
 import java.util.*;
 
-public class Population{
+import javafx.scene.control.Button;
+
+public class Population {
 	
 	private List<String> listColony;
+	public Button button;
 	
-    public Population() {
+    Population() {
+    	button = new Button ("Population");
+    	ButtonPattern bp = new ButtonPattern ();
+    	bp.adaptButton(button);
     }    
 
     public List<String> getListColony() {

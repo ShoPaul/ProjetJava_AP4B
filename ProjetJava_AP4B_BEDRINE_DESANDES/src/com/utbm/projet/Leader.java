@@ -2,9 +2,16 @@ package com.utbm.projet;
 
 import java.util.*;
 
-public class Leader{
+import javafx.scene.control.Button;
 
-    public Leader() {
+public class Leader{
+	
+	public Button button;
+
+    Leader() {
+    	button = new Button ("Leader");
+    	ButtonPattern bp = new ButtonPattern();
+    	bp.adaptButton(button);
     }
 
     public void delockLeader() {
