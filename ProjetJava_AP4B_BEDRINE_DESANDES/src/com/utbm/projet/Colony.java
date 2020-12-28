@@ -1,3 +1,4 @@
+package com.utbm.projet;
 
 import java.util.*;
 
@@ -31,7 +32,6 @@ public class Colony {
      */
     public void setColonyName(String colonieName) {
         // TODO implement here
-        return null;
     }
 
     /**
