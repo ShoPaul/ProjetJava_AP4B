@@ -2,7 +2,6 @@ package com.utbm.projet;
 
 import java.util.*;
 
-import javafx.application.Application.*;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -11,10 +10,10 @@ import javafx.scene.text.FontWeight;
 
 public class Economy {
 
-	private Label carboneLabel;
-	private Label diazoteLabel;
-	private Label hydrogeneLabel;
-	private Label oxygeneLabel;
+	public Label carboneLabel;
+	public Label diazoteLabel;
+	public Label hydrogeneLabel;
+	public Label oxygeneLabel;
 	
 	private int carboneNumber;
 	private int diazoteNumber;
@@ -41,23 +40,18 @@ public class Economy {
     	hydrogeneLabel = new Label();
     	oxygeneLabel = new Label();
     	
-    	carboneLabel.setText("Carbone :		" + carboneNumber);
-		carboneLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 12));
+    	carboneLabel.setText("Carbone :	" + carboneNumber);
+		carboneLabel.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 12));
 		carboneLabel.setTextFill(Color.WHITE);
-		diazoteLabel.setText("Diazote :		" + diazoteNumber);
-		diazoteLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 12));
+		diazoteLabel.setText("Diazote :	" + diazoteNumber);
+		diazoteLabel.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 12));
 		diazoteLabel.setTextFill(Color.WHITE);
-		hydrogeneLabel.setText("Hydrogene :		" + hydrogeneNumber);
-		hydrogeneLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 12));
+		hydrogeneLabel.setText("Hydrogene :	" + hydrogeneNumber);
+		hydrogeneLabel.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 12));
 		hydrogeneLabel.setTextFill(Color.WHITE);
-		oxygeneLabel.setText("Oxygene :		" + oxygeneNumber);
-		oxygeneLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 12));
+		oxygeneLabel.setText("Oxygene :	" + oxygeneNumber);
+		oxygeneLabel.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 12));
 		oxygeneLabel.setTextFill(Color.WHITE);
-    	
-    	
+    	    	
     }
-    public void Economy(Oxygene Oxygene, Diazote Diazote, Carbone Carbone, Hydrogene Hydrogene) {
-        // TODO implement here
-    }
-
 }
