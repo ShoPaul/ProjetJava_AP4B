@@ -1,29 +1,16 @@
+package com.utbm.projet;
 
 import java.util.*;
 
-/**
- * 
- */
-public class Leader extends GUI {
+public class Leader{
 
-    /**
-     * Default constructor
-     */
     public Leader() {
     }
 
-
-
-    /**
-     * 
-     */
     public void delockLeader() {
         // TODO implement here
     }
 
-    /**
-     * 
-     */
     public enum listeDirigeants {
     }
 
