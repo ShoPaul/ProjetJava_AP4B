@@ -1,10 +1,5 @@
 package com.utbm.projet;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Date;
-
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -48,9 +43,6 @@ public class MainApp extends Application {
 	private Button cultureButton = new Button("Culture");
 	private Button medecineButton= new Button("Medecine");
 	private Button leaderButton = new Button("Leader");
-	private Label monthLabel = new Label();
-	private Label numberOfTheDayLabel = new Label();
-	private Label actualTime = new Label();
 	
 	private Planet planet = new Planet();
 
@@ -99,43 +91,14 @@ public class MainApp extends Application {
 		dropShadow.setColor(Color.color(0.4, 0.5, 0.5));
 		
 		Economy Eco = new Economy (50,50,50,50);
-		
-		// Create Time labels
-		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(200), new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {
-				LocalDate currentDate = LocalDate.now();
-				int day = currentDate.getDayOfMonth();
-				Month month = currentDate.getMonth();
-				SimpleDateFormat formatter= new SimpleDateFormat("HH:mm:ss");
-				Date date = new Date(System.currentTimeMillis());
-				
-				monthLabel.setText(month.toString());
-				monthLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 15));
-				monthLabel.setTextFill(Color.WHITE);
-				monthLabel.setEffect(dropShadow);
-				numberOfTheDayLabel.setText(String.format("%d", day));
-				numberOfTheDayLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 15));
-				numberOfTheDayLabel.setTextFill(Color.WHITE);
-				numberOfTheDayLabel.setEffect(dropShadow);
-				actualTime.setText(formatter.format(date));
-				actualTime.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 15));
-				actualTime.setTextFill(Color.WHITE);
-				actualTime.setEffect(dropShadow);
-			}
-			
-		}));
-
-		timeline.setCycleCount(Animation.INDEFINITE);
-		timeline.play();
+		Time time = new Time();
 		
 		// Call the planet method saying that Venus is the planet wanted by the player
 		planet.itsVenus(planet);
 		planet.setLabels(planet);
 		
 		// Time HBox
-		dateLabels.getChildren().addAll(monthLabel, numberOfTheDayLabel, actualTime);
+		dateLabels.getChildren().addAll(time.month, time.day, time.clock);
 		dateLabels.setAlignment(Pos.CENTER);
 		
 		// Resources HBox
@@ -198,5 +161,4 @@ public class MainApp extends Application {
 		// Start app
 		launch(args);
 	}
-
 }
