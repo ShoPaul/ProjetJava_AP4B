@@ -10,7 +10,7 @@ public class Carbone {
 
     public void Carbone(int nbCarbone) {
     	
-        nbCarbone += ;
+        //nbCarbone += ;
     }
 
 }
