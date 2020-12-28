@@ -23,12 +23,6 @@ public class Time {
 	public Label day;
 	public Label clock;
 	
-	/*Time (){
-		month = new Label ("January");
-		day = new Label ("1st");
-		clock = new Label ("00:00:00");
-	}*/
-	
 	Time (){
 		DropShadow dropShadow = new DropShadow();
 		dropShadow.setRadius(5.0);
