@@ -20,7 +20,6 @@ public class Planet {
     	planet.planetName = mars.name;
     	planet.planetImage = mars.planetLinkImage;
     	//setLabels(planet);
-    	test
     }
     
     public void itsVenus(Planet planet) {
