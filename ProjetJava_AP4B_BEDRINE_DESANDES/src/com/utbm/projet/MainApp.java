@@ -28,7 +28,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -53,7 +52,6 @@ public class MainApp extends Application {
 	private Label diazoteLabel = new Label();
 	private Label hydrogeneLabel = new Label();
 	private Label oxygeneLabel = new Label();
-	private Label planetNameLabel = new Label();
 	private Label monthLabel = new Label();
 	private Label numberOfTheDayLabel = new Label();
 	private Label actualTime = new Label();
@@ -154,12 +152,7 @@ public class MainApp extends Application {
 		
 		// Call the planet method saying that Venus is the planet wanted by the player
 		planet.itsVenus(planet);
-		
-		// Set information on the chosen planet
-		planetNameLabel.setText(planet.planetName);
-		planetNameLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 30));
-		planetNameLabel.setTextFill(Color.WHITE);
-		planetNameLabel.setEffect(dropShadow);
+		planet.setLabels(planet);
 		
 		// Time HBox
 		dateLabels.getChildren().addAll(monthLabel, numberOfTheDayLabel, actualTime);
@@ -170,7 +163,7 @@ public class MainApp extends Application {
 		economyLabels.setAlignment(Pos.CENTER);
 		
 		// Resources, Time and planet info in the VBox presentation
-		presentation.getChildren().addAll(economyLabels, planetNameLabel, dateLabels);
+		presentation.getChildren().addAll(economyLabels, planet.planetNameLabel, dateLabels);
 		presentation.setAlignment(Pos.CENTER);
 		
 		BorderPane.setMargin(presentation, new Insets(30));
