@@ -1,10 +1,11 @@
+package com.utbm.projet;
 
 import java.util.*;
 
 /**
  * 
  */
-public class Culture extends GUI {
+public class Culture {
 
     /**
      * Default constructor
