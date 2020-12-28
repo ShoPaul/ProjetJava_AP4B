@@ -2,10 +2,12 @@ package com.utbm.projet;
 
 import java.util.*;
 
+import javafx.application.Application.*;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
 
 public class Economy {
 
@@ -51,6 +53,8 @@ public class Economy {
 		oxygeneLabel.setText("Oxygene :		" + oxygeneNumber);
 		oxygeneLabel.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 12));
 		oxygeneLabel.setTextFill(Color.WHITE);
+    	
+    	
     }
     public void Economy(Oxygene Oxygene, Diazote Diazote, Carbone Carbone, Hydrogene Hydrogene) {
         // TODO implement here
