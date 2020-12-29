@@ -33,11 +33,12 @@ public class Planet {
 	public Button venusButton = new Button();
 	public Button mercuryButton = new Button();
 	public VBox planetChoiceVBox = new VBox();
-	public HBox buttonsVBox = new HBox(100);
+	public HBox buttonsHBox = new HBox(100);
 
 	public Planet() {
 	}
 
+	// Method to add Mars's infos to planet
 	public void itsMars(Planet planet, BorderPane root) {
 		Mars mars = new Mars();
 		planet.planetName = mars.name;
@@ -45,6 +46,7 @@ public class Planet {
 		setLabels(planet, root);
 	}
 
+	// Method to add Venus's infos to planet
 	public void itsVenus(Planet planet, BorderPane root) {
 		Venus venus = new Venus();
 		planet.planetName = venus.name;
@@ -52,6 +54,7 @@ public class Planet {
 		setLabels(planet, root);
 	}
 
+	// Method to add Mercury's infos to planet
 	public void itsMercury(Planet planet, BorderPane root) {
 		Mercure mercure = new Mercure();
 		planet.planetName = mercure.name;
@@ -59,6 +62,7 @@ public class Planet {
 		setLabels(planet, root);
 	}
 
+	// Method to set planet label and add the background to root (component of scene2)
 	private void setLabels(Planet planet, BorderPane root) {
 		Image background = new Image(this.getClass().getResourceAsStream(planet.planetImage));
 
@@ -76,12 +80,14 @@ public class Planet {
 		planet.planetNameLabel.setTextFill(Color.WHITE);
 		planet.planetNameLabel.setEffect(dropShadow);
 
+		// Set background to root
 		root.setBackground(
 				new Background(new BackgroundImage(background, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
 						BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
 	}
 
 	public void planetChoice(Planet planet) {
+		// Buttons's and text's effects
 		DropShadow dropShadow1 = new DropShadow();
 		dropShadow1.setRadius(5.0);
 		dropShadow1.setOffsetX(3.0);
@@ -96,9 +102,11 @@ public class Planet {
 		dropShadow3.setWidth(20.0);
 		dropShadow3.setColor(Color.WHITE);
 
+		// Buttons's background
 		Image buttonsBackground = new Image(
 				this.getClass().getResourceAsStream("/resources/images/backgrounds/blackStarsBackground.jpg"));
 
+		// Set planet.marsButton's effects, styles and infos
 		planet.marsButton.setText("Mars");
 		planet.marsButton.setFont(
 				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
@@ -109,8 +117,9 @@ public class Planet {
 		planet.marsButton.setMinSize(100, 100);
 		planet.marsButton.setCursor(Cursor.HAND);
 		planet.marsButton.effectProperty()
-				.bind(Bindings.when(planet.venusButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
+				.bind(Bindings.when(planet.marsButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
 
+		// Set planet.venusButton's effects, styles and infos
 		planet.venusButton.setText("Venus");
 		planet.venusButton.setFont(
 				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
@@ -123,6 +132,7 @@ public class Planet {
 		planet.venusButton.effectProperty()
 				.bind(Bindings.when(planet.venusButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
 
+		// Set planet.mercuryButton's effects, styles and infos
 		planet.mercuryButton.setText("Mercure");
 		planet.mercuryButton.setFont(
 				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
@@ -133,42 +143,53 @@ public class Planet {
 		planet.mercuryButton.setMinSize(100, 100);
 		planet.mercuryButton.setCursor(Cursor.HAND);
 		planet.mercuryButton.effectProperty()
-				.bind(Bindings.when(planet.venusButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
+				.bind(Bindings.when(planet.mercuryButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
 
+		// Set planet.planetChoiceLabel's effects, styles and infos
 		planet.planetChoiceLabel.setText("Quelle planète choisissez-vous ?");
 		planet.planetChoiceLabel.setFont(
 				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 50));
 		planet.planetChoiceLabel.setTextFill(Color.web("2E7BD8"));
 		planet.planetChoiceLabel.setEffect(dropShadow1);
 
-		planet.buttonsVBox.getChildren().addAll(planet.marsButton, planet.venusButton, planet.mercuryButton);
-		planet.buttonsVBox.setAlignment(Pos.CENTER);
+		// Add planet's buttons to the HBox planet.buttonsHBox
+		planet.buttonsHBox.getChildren().addAll(planet.marsButton, planet.venusButton, planet.mercuryButton);
+		planet.buttonsHBox.setAlignment(Pos.CENTER);
 
-		planet.planetChoiceVBox.getChildren().addAll(planet.planetChoiceLabel, planet.buttonsVBox);
+		// Add VBox planet.buttonsHBox and the label planet.planetChoiceLabel to the VBox planet.planetChoiceVBox
+		planet.planetChoiceVBox.getChildren().addAll(planet.planetChoiceLabel, planet.buttonsHBox);
 		planet.planetChoiceVBox.setAlignment(Pos.CENTER);
 
+		// Add a background to scene1
 		Image scene1Background = new Image(
 				this.getClass().getResourceAsStream("/resources/images/backgrounds/scene1Background.jpg"));
 		planet.planetChoiceVBox.setBackground(new Background(
 				new BackgroundImage(scene1Background, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
 						BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
 
+		// Set VBox margin for planet.planetChoiceLabel
 		VBox.setMargin(planet.planetChoiceLabel, new Insets(0, 0, 200, 0));
 
 	}
 
 	public void onMercuryButtonClick(ActionEvent e, Stage primaryStage, BorderPane root, Scene scene2) {
+		// Call method to have mercury infos
 		itsMercury(this, root);
+		// Set scene2
 		primaryStage.setScene(scene2);
 	}
 
 	public void onVenusButtonClick(ActionEvent e, Stage primaryStage, BorderPane root, Scene scene2) {
+		// Call method to have venus infos
 		itsVenus(this, root);
+		// Set scene2
 		primaryStage.setScene(scene2);
 	}
 
 	public void onMarsButtonClick(ActionEvent e, Stage primaryStage, BorderPane root, Scene scene2) {
+		// Call method to have mars infos
 		itsMars(this, root);
+		// Set scene2
 		primaryStage.setScene(scene2);
 	}
 }
