@@ -4,7 +4,7 @@ public class Venus extends Planet {
 
 	public String name = "Venus";
 
-	public String planetLinkImage = "/resources/images/planets/venusBackground.jpg";
+	public String planetLinkImage = "/resources/images/backgrounds/venusBackground.jpg";
 
     public Venus() {
     }

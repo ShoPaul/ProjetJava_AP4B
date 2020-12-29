@@ -77,34 +77,42 @@ public class Planet {
     }
     
     public void planetChoice(Planet planet) {
+    	Image buttonsBackground = new Image(this.getClass().getResourceAsStream("/resources/images/backgrounds/blackStarsBackground.jpg"));
+    	
     	planet.marsButton.setText("Mars");
     	planet.marsButton.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
     	planet.marsButton.setTextFill(Color.web("2E7BD8"));
-    	planet.marsButton.setBackground(new Background(new BackgroundImage(new Image(this.getClass().getResourceAsStream("/resources/images/planets/blackStarsBackground.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
+    	planet.marsButton.setBackground(new Background(new BackgroundImage(buttonsBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
     	planet.marsButton.setMinSize(100, 100);
     	
     	planet.venusButton.setText("Venus");
     	planet.venusButton.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
     	planet.venusButton.setTextFill(Color.web("2E7BD8"));
-    	planet.venusButton.setBackground(new Background(new BackgroundImage(new Image(this.getClass().getResourceAsStream("/resources/images/planets/blackStarsBackground.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
+    	planet.venusButton.setBackground(new Background(new BackgroundImage(buttonsBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
     	planet.venusButton.setMinSize(100, 100);
     	
     	planet.mercuryButton.setText("Mercure");
     	planet.mercuryButton.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
     	planet.mercuryButton.setTextFill(Color.web("2E7BD8"));
-    	planet.mercuryButton.setBackground(new Background(new BackgroundImage(new Image(this.getClass().getResourceAsStream("/resources/images/planets/blackStarsBackground.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
+    	planet.mercuryButton.setBackground(new Background(new BackgroundImage(buttonsBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
     	planet.mercuryButton.setMinSize(100, 100);
     	
     	planet.planetChoiceLabel.setText("Quelle planète choisissez-vous ?");
     	planet.planetChoiceLabel.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 50));
+    	planet.planetChoiceLabel.setTextFill(Color.web("2E7BD8"));
     	
     	planet.buttonsVBox.getChildren().addAll(planet.marsButton, planet.venusButton, planet.mercuryButton);
     	planet.buttonsVBox.setAlignment(Pos.CENTER);
     	
     	planet.planetChoiceVBox.getChildren().addAll(planet.planetChoiceLabel, planet.buttonsVBox);
     	planet.planetChoiceVBox.setAlignment(Pos.CENTER);
+    	
+    	Image scene1Background = new Image(this.getClass().getResourceAsStream("/resources/images/backgrounds/scene1Background.jpg"));
+    	planet.planetChoiceVBox.setBackground(new Background(new BackgroundImage(scene1Background, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
+    
     	VBox.setMargin(planet.planetChoiceLabel, new Insets(0, 0, 200, 0));
-    }
+    	
+    	}
     
 
 	public void onMercuryButtonClick(ActionEvent e, Stage primaryStage, BorderPane root, Scene scene2) {
