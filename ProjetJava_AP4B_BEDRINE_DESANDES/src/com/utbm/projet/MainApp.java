@@ -1,6 +1,7 @@
 package com.utbm.projet;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -31,7 +32,9 @@ public class MainApp extends Application {
 	private static Planet planet = new Planet();
 	private Image background = new Image(this.getClass().getResourceAsStream(""));
 	
-	public Scene scene2 = new Scene(root, 1600, 900);
+	private Scene scene1 = new Scene(planet.planetChoiceVBox, 1600, 900);
+	private Scene scene2 = new Scene(root, 1600, 900);
+	
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {	
@@ -42,13 +45,12 @@ public class MainApp extends Application {
 		Image icon64 = new Image(this.getClass().getResourceAsStream("/resources/images/icon/icon64.png"));
 		//Image background = new Image(this.getClass().getResourceAsStream(backgroundImage));
 		
-		planet.planetChoice(planet, background);
-		
-		
-		
-		Scene scene1 = new Scene(planet.planetChoiceVBox, 1600, 900);
 		primaryStage.setScene(scene1);
 		
+		planet.planetChoice(planet, background);
+		planet.marsButton.setOnAction((e) -> method(e, primaryStage));
+		
+	
 		// Call method for placing bottom components in the BorderPane
 		setBottomComponents();
 		
@@ -57,13 +59,6 @@ public class MainApp extends Application {
 
 		// Set BorderPane background
 		root.setBackground(new Background(new BackgroundImage(background, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
-		
-		// Create the scene and add root
-		
-		//primaryStage.setScene(scene2);
-		
-		
-		
 		
 		// Stage configuration
 		primaryStage.setTitle("Survival on a planet");
@@ -74,6 +69,10 @@ public class MainApp extends Application {
 
 		// Show the window
 		primaryStage.show();
+	}
+
+	private void method(ActionEvent e, Stage primaryStage) {
+		primaryStage.setScene(scene2);
 	}
 
 	private void setTopComponents() {
