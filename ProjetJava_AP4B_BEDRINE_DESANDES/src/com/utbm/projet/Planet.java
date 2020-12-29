@@ -1,6 +1,5 @@
 package com.utbm.projet;
 
-import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -12,6 +11,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -33,31 +33,30 @@ public class Planet {
     public Planet() {
     }
     
-    private void itsMars(ActionEvent e, Planet planet, Image background) {
+    public void itsMars(Planet planet, BorderPane root) {
     	Mars mars = new Mars();
     	planet.planetName = mars.name;
     	planet.planetImage = mars.planetLinkImage;
-    	background = new Image(this.getClass().getResourceAsStream(planet.planetImage));
-    	setLabels(planet);
+    	setLabels(planet, root);
     }
     
-    private void itsVenus(ActionEvent e, Planet planet, Image background) {
+    public void itsVenus(Planet planet, BorderPane root) {
     	Venus venus = new Venus();
     	planet.planetName = venus.name;
     	planet.planetImage = venus.planetLinkImage;
-    	//background = planet.planetImage;
-    	setLabels(planet);
+    	setLabels(planet, root);
     }
     
-    private void itsMercure(ActionEvent e, Planet planet, Image background) {
+    public void itsMercure(Planet planet, BorderPane root) {
     	Mercure mercure = new Mercure();
     	planet.planetName = mercure.name;
     	planet.planetImage = mercure.planetLinkImage;
-    	//background = planet.planetImage;
-    	setLabels(planet);
+    	setLabels(planet, root);
     }
     
-    private void setLabels(Planet planet) {
+    private void setLabels(Planet planet, BorderPane root) {
+    	Image background = new Image(this.getClass().getResourceAsStream(planet.planetImage));
+    	
     	// Text effect
 		DropShadow dropShadow = new DropShadow();
 		dropShadow.setRadius(5.0);
@@ -70,9 +69,11 @@ public class Planet {
 		planet.planetNameLabel.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 30));
 		planet.planetNameLabel.setTextFill(Color.WHITE);
 		planet.planetNameLabel.setEffect(dropShadow);
+		
+		root.setBackground(new Background(new BackgroundImage(background, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
     }
     
-    public void planetChoice(Planet planet, Image background) {
+    public void planetChoice(Planet planet) {
     	planet.marsButton.setText("Mars");
     	planet.marsButton.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
     	planet.marsButton.setTextFill(Color.web("2E7BD8"));
@@ -88,9 +89,5 @@ public class Planet {
     	planet.planetChoiceVBox.getChildren().addAll(planet.planetChoiceLabel, planet.buttonsVBox);
     	planet.planetChoiceVBox.setAlignment(Pos.CENTER);
     	VBox.setMargin(planet.planetChoiceLabel, new Insets(0, 0, 200, 0));
-    	
-    	planet.marsButton.setOnAction((e) -> planet.itsMars(e, planet, background));
-    	planet.venusButton.setOnAction((e) -> planet.itsVenus(e, planet, background));
-    	planet.mercuryButton.setOnAction((e) -> planet.itsMercure(e, planet, background));
     }
 }

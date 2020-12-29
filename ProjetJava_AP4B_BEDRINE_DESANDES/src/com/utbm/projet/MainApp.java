@@ -7,11 +7,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -29,8 +24,7 @@ public class MainApp extends Application {
 	private Leader lead = new Leader ();
 	private Medecine med = new Medecine ();
 	private Population pop = new Population ();
-	private static Planet planet = new Planet();
-	private Image background = new Image(this.getClass().getResourceAsStream(""));
+	private Planet planet = new Planet();
 	
 	private Scene scene1 = new Scene(planet.planetChoiceVBox, 1600, 900);
 	private Scene scene2 = new Scene(root, 1600, 900);
@@ -43,12 +37,12 @@ public class MainApp extends Application {
 		Image icon24 = new Image(this.getClass().getResourceAsStream("/resources/images/icon/icon24.png"));
 		Image icon32 = new Image(this.getClass().getResourceAsStream("/resources/images/icon/icon32.png"));
 		Image icon64 = new Image(this.getClass().getResourceAsStream("/resources/images/icon/icon64.png"));
-		//Image background = new Image(this.getClass().getResourceAsStream(backgroundImage));
+		
+		planet.planetChoice(planet);
 		
 		primaryStage.setScene(scene1);
 		
-		planet.planetChoice(planet, background);
-		planet.marsButton.setOnAction((e) -> method(e, primaryStage));
+		planet.marsButton.setOnAction((e) -> onMarsButtonClick(e, primaryStage));
 		
 	
 		// Call method for placing bottom components in the BorderPane
@@ -56,9 +50,6 @@ public class MainApp extends Application {
 		
 		// Call method for placing top components in the BorderPane
 		setTopComponents();
-
-		// Set BorderPane background
-		root.setBackground(new Background(new BackgroundImage(background, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
 		
 		// Stage configuration
 		primaryStage.setTitle("Survival on a planet");
@@ -71,7 +62,10 @@ public class MainApp extends Application {
 		primaryStage.show();
 	}
 
-	private void method(ActionEvent e, Stage primaryStage) {
+	private void onMarsButtonClick(ActionEvent e, Stage primaryStage) {
+		planet.itsMars(planet, root);
+		System.out.println(planet.planetName);
+		System.out.println(planet.planetImage);
 		primaryStage.setScene(scene2);
 	}
 
