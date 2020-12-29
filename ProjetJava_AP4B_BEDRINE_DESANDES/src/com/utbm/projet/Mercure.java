@@ -6,6 +6,6 @@ public class Mercure extends Planet {
 
 	public String planetLinkImage = "/resources/images/planets/mercuryBackground.jpg";
 
-    public Mercure() {
+    Mercure() {
     }
 }
