@@ -66,7 +66,7 @@ public class MainApp extends Application {
 		// Stage configuration
 		primaryStage.setTitle("Survival on a planet");
 		primaryStage.getIcons().addAll(icon16, icon24, icon32, icon64);
-		primaryStage.setFullScreen(false);
+		primaryStage.setFullScreen(true);
 		primaryStage.setResizable(true);
 		primaryStage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
 
