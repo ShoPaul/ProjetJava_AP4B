@@ -1,7 +1,9 @@
 package com.utbm.projet;
 
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -17,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 public class Planet {
 
@@ -28,7 +31,7 @@ public class Planet {
 	public Button venusButton = new Button();
 	public Button mercuryButton = new Button();
 	public VBox planetChoiceVBox = new VBox();
-	public HBox buttonsVBox = new HBox();
+	public HBox buttonsVBox = new HBox(100);
 	
     public Planet() {
     }
@@ -47,7 +50,7 @@ public class Planet {
     	setLabels(planet, root);
     }
     
-    public void itsMercure(Planet planet, BorderPane root) {
+    public void itsMercury(Planet planet, BorderPane root) {
     	Mercure mercure = new Mercure();
     	planet.planetName = mercure.name;
     	planet.planetImage = mercure.planetLinkImage;
@@ -80,14 +83,42 @@ public class Planet {
     	planet.marsButton.setBackground(new Background(new BackgroundImage(new Image(this.getClass().getResourceAsStream("/resources/images/planets/blackStarsBackground.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
     	planet.marsButton.setMinSize(100, 100);
     	
+    	planet.venusButton.setText("Venus");
+    	planet.venusButton.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
+    	planet.venusButton.setTextFill(Color.web("2E7BD8"));
+    	planet.venusButton.setBackground(new Background(new BackgroundImage(new Image(this.getClass().getResourceAsStream("/resources/images/planets/blackStarsBackground.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
+    	planet.venusButton.setMinSize(100, 100);
+    	
+    	planet.mercuryButton.setText("Mercure");
+    	planet.mercuryButton.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
+    	planet.mercuryButton.setTextFill(Color.web("2E7BD8"));
+    	planet.mercuryButton.setBackground(new Background(new BackgroundImage(new Image(this.getClass().getResourceAsStream("/resources/images/planets/blackStarsBackground.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
+    	planet.mercuryButton.setMinSize(100, 100);
+    	
     	planet.planetChoiceLabel.setText("Quelle planète choisissez-vous ?");
     	planet.planetChoiceLabel.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 50));
     	
-    	planet.buttonsVBox.getChildren().addAll(planet.marsButton);
+    	planet.buttonsVBox.getChildren().addAll(planet.marsButton, planet.venusButton, planet.mercuryButton);
     	planet.buttonsVBox.setAlignment(Pos.CENTER);
     	
     	planet.planetChoiceVBox.getChildren().addAll(planet.planetChoiceLabel, planet.buttonsVBox);
     	planet.planetChoiceVBox.setAlignment(Pos.CENTER);
     	VBox.setMargin(planet.planetChoiceLabel, new Insets(0, 0, 200, 0));
     }
+    
+
+	public void onMercuryButtonClick(ActionEvent e, Stage primaryStage, BorderPane root, Scene scene2) {
+		itsMercury(this, root);
+		primaryStage.setScene(scene2);
+	}
+
+	public void onVenusButtonClick(ActionEvent e, Stage primaryStage, BorderPane root, Scene scene2) {
+		itsVenus(this, root);
+		primaryStage.setScene(scene2);
+	}
+
+	public void onMarsButtonClick(ActionEvent e, Stage primaryStage, BorderPane root, Scene scene2) {
+		itsMars(this, root);
+		primaryStage.setScene(scene2);
+	}
 }

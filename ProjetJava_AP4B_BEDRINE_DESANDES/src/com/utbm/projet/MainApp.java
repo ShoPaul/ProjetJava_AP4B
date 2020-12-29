@@ -42,9 +42,10 @@ public class MainApp extends Application {
 		
 		primaryStage.setScene(scene1);
 		
-		planet.marsButton.setOnAction((e) -> onMarsButtonClick(e, primaryStage));
+		planet.marsButton.setOnAction((e) -> planet.onMarsButtonClick(e, primaryStage, root, scene2));
+		planet.venusButton.setOnAction((e) -> planet.onVenusButtonClick(e, primaryStage, root, scene2));
+		planet.mercuryButton.setOnAction((e) -> planet.onMercuryButtonClick(e, primaryStage, root, scene2));
 		
-	
 		// Call method for placing bottom components in the BorderPane
 		setBottomComponents();
 		
@@ -60,13 +61,6 @@ public class MainApp extends Application {
 
 		// Show the window
 		primaryStage.show();
-	}
-
-	private void onMarsButtonClick(ActionEvent e, Stage primaryStage) {
-		planet.itsMars(planet, root);
-		System.out.println(planet.planetName);
-		System.out.println(planet.planetImage);
-		primaryStage.setScene(scene2);
 	}
 
 	private void setTopComponents() {
