@@ -44,8 +44,6 @@ public class MainApp extends Application {
 		
 		planet.planetChoice(planet, background);
 		
-		
-		
 		Scene scene1 = new Scene(planet.planetChoiceVBox, 1600, 900);
 		primaryStage.setScene(scene1);
 		
