@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -15,6 +16,9 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.util.Duration;
 
 public class Engineer extends Faction {
 
@@ -48,6 +52,12 @@ public class Engineer extends Faction {
 		engineerButton.setCursor(Cursor.HAND);
 		engineerButton.effectProperty()
 				.bind(Bindings.when(engineerButton.hoverProperty()).then(dropShadow2).otherwise(dropShadow1));
+		Tooltip tt = new Tooltip();
+		tt.setText(factionName);
+		tt.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 14));
+		tt.setShowDelay(Duration.ZERO);
+		tt.setHideDelay(Duration.ZERO);
+		engineerButton.setTooltip(tt);
 
 		factionNameLabel.setText(factionName);
 		factionNameLabel.setTextFill(Color.web("2E7BD8"));
