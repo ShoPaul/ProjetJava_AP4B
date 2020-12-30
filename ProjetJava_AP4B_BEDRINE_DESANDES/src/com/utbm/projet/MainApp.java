@@ -24,9 +24,11 @@ public class MainApp extends Application {
 	private Medecine med = new Medecine();
 	private Population pop = new Population();
 	private Planet planet = new Planet();
+	private Faction faction = new Faction();
 
 	private Scene scene1 = new Scene(planet.planetChoiceVBox, 1600, 900);
-	private Scene scene2 = new Scene(root, 1600, 900);
+	private Scene scene2 = new Scene(faction.factionBorder, 1600, 900);
+	//private Scene scene3 = new Scene(root, 1600, 900);
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -35,7 +37,9 @@ public class MainApp extends Application {
 		Image icon24 = new Image(this.getClass().getResourceAsStream("/resources/images/icon/icon24.png"));
 		Image icon32 = new Image(this.getClass().getResourceAsStream("/resources/images/icon/icon32.png"));
 		Image icon64 = new Image(this.getClass().getResourceAsStream("/resources/images/icon/icon64.png"));
-
+		
+		faction.factionChoice(faction);
+		
 		planet.planetChoice(planet);
 
 		primaryStage.setScene(scene1);

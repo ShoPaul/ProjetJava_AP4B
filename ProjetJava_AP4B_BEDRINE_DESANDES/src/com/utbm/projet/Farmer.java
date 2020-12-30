@@ -1,12 +1,10 @@
 package com.utbm.projet;
 
-import java.util.*;
-
 public class Farmer extends Faction {
 
-	private String name;
-    private int nbBoost;
-    private String domain;
+	private String factionName;
+    private int boostNumber;
+    private String boostDomain;
     
     public Farmer() {
     }

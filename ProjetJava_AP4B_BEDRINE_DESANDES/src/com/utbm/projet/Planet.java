@@ -36,6 +36,70 @@ public class Planet {
 	public HBox buttonsHBox = new HBox(100);
 
 	public Planet() {
+		// Buttons's and text's effects
+		DropShadow dropShadow1 = new DropShadow();
+		dropShadow1.setRadius(5.0);
+		dropShadow1.setOffsetX(3.0);
+		dropShadow1.setOffsetY(5.0);
+		dropShadow1.setColor(Color.BLACK);
+		DropShadow dropShadow2 = new DropShadow();
+		dropShadow2.setRadius(1.9);
+		dropShadow2.setColor(Color.WHITE);
+		DropShadow dropShadow3 = new DropShadow();
+		dropShadow3.setRadius(8.0);
+		dropShadow3.setHeight(20.0);
+		dropShadow3.setWidth(20.0);
+		dropShadow3.setColor(Color.WHITE);
+
+		// Buttons's background
+		Image buttonsBackground = new Image(
+				this.getClass().getResourceAsStream("/resources/images/backgrounds/blackStarsBackground.jpg"));
+
+		// Set marsButton's effects, styles and infos
+		marsButton.setText("Mars");
+		marsButton.setFont(
+				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
+		marsButton.setTextFill(Color.web("2E7BD8"));
+		marsButton.setBackground(new Background(
+				new BackgroundImage(buttonsBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+						BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
+		marsButton.setMinSize(100, 100);
+		marsButton.setCursor(Cursor.HAND);
+		marsButton.effectProperty()
+				.bind(Bindings.when(marsButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
+
+		// Set venusButton's effects, styles and infos
+		venusButton.setText("Venus");
+		venusButton.setFont(
+				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
+		venusButton.setTextFill(Color.web("2E7BD8"));
+		venusButton.setBackground(new Background(
+				new BackgroundImage(buttonsBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+						BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
+		venusButton.setMinSize(100, 100);
+		venusButton.setCursor(Cursor.HAND);
+		venusButton.effectProperty()
+				.bind(Bindings.when(venusButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
+
+		// Set mercuryButton's effects, styles and infos
+		mercuryButton.setText("Mercure");
+		mercuryButton.setFont(
+				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
+		mercuryButton.setTextFill(Color.web("2E7BD8"));
+		mercuryButton.setBackground(new Background(
+				new BackgroundImage(buttonsBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+						BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
+		mercuryButton.setMinSize(100, 100);
+		mercuryButton.setCursor(Cursor.HAND);
+		mercuryButton.effectProperty()
+				.bind(Bindings.when(mercuryButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
+
+		// Set planetChoiceLabel's effects, styles and infos
+		planetChoiceLabel.setText("Choisir une planète".toUpperCase());
+		planetChoiceLabel.setFont(
+				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 50));
+		planetChoiceLabel.setTextFill(Color.web("2E7BD8"));
+		planetChoiceLabel.setEffect(dropShadow1);
 	}
 
 	// Method to add Mars's infos to planet
@@ -87,71 +151,6 @@ public class Planet {
 	}
 
 	public void planetChoice(Planet planet) {
-		// Buttons's and text's effects
-		DropShadow dropShadow1 = new DropShadow();
-		dropShadow1.setRadius(5.0);
-		dropShadow1.setOffsetX(3.0);
-		dropShadow1.setOffsetY(5.0);
-		dropShadow1.setColor(Color.BLACK);
-		DropShadow dropShadow2 = new DropShadow();
-		dropShadow2.setRadius(1.9);
-		dropShadow2.setColor(Color.WHITE);
-		DropShadow dropShadow3 = new DropShadow();
-		dropShadow3.setRadius(8.0);
-		dropShadow3.setHeight(20.0);
-		dropShadow3.setWidth(20.0);
-		dropShadow3.setColor(Color.WHITE);
-
-		// Buttons's background
-		Image buttonsBackground = new Image(
-				this.getClass().getResourceAsStream("/resources/images/backgrounds/blackStarsBackground.jpg"));
-
-		// Set planet.marsButton's effects, styles and infos
-		planet.marsButton.setText("Mars");
-		planet.marsButton.setFont(
-				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
-		planet.marsButton.setTextFill(Color.web("2E7BD8"));
-		planet.marsButton.setBackground(new Background(
-				new BackgroundImage(buttonsBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-						BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
-		planet.marsButton.setMinSize(100, 100);
-		planet.marsButton.setCursor(Cursor.HAND);
-		planet.marsButton.effectProperty()
-				.bind(Bindings.when(planet.marsButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
-
-		// Set planet.venusButton's effects, styles and infos
-		planet.venusButton.setText("Venus");
-		planet.venusButton.setFont(
-				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
-		planet.venusButton.setTextFill(Color.web("2E7BD8"));
-		planet.venusButton.setBackground(new Background(
-				new BackgroundImage(buttonsBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-						BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
-		planet.venusButton.setMinSize(100, 100);
-		planet.venusButton.setCursor(Cursor.HAND);
-		planet.venusButton.effectProperty()
-				.bind(Bindings.when(planet.venusButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
-
-		// Set planet.mercuryButton's effects, styles and infos
-		planet.mercuryButton.setText("Mercure");
-		planet.mercuryButton.setFont(
-				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 15));
-		planet.mercuryButton.setTextFill(Color.web("2E7BD8"));
-		planet.mercuryButton.setBackground(new Background(
-				new BackgroundImage(buttonsBackground, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-						BackgroundPosition.CENTER, new BackgroundSize(0, 0, false, false, false, true))));
-		planet.mercuryButton.setMinSize(100, 100);
-		planet.mercuryButton.setCursor(Cursor.HAND);
-		planet.mercuryButton.effectProperty()
-				.bind(Bindings.when(planet.mercuryButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
-
-		// Set planet.planetChoiceLabel's effects, styles and infos
-		planet.planetChoiceLabel.setText("Quelle planète choisissez-vous ?");
-		planet.planetChoiceLabel.setFont(
-				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 50));
-		planet.planetChoiceLabel.setTextFill(Color.web("2E7BD8"));
-		planet.planetChoiceLabel.setEffect(dropShadow1);
-
 		// Add planet's buttons to the HBox planet.buttonsHBox
 		planet.buttonsHBox.getChildren().addAll(planet.marsButton, planet.venusButton, planet.mercuryButton);
 		planet.buttonsHBox.setAlignment(Pos.CENTER);
@@ -169,7 +168,6 @@ public class Planet {
 
 		// Set VBox margin for planet.planetChoiceLabel
 		VBox.setMargin(planet.planetChoiceLabel, new Insets(0, 0, 200, 0));
-
 	}
 
 	public void onMercuryButtonClick(ActionEvent e, Stage primaryStage, BorderPane root, Scene scene2) {
