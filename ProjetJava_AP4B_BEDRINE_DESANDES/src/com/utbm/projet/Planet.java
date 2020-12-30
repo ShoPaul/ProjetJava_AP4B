@@ -94,6 +94,8 @@ public class Planet {
 		planet.planetName = mars.name;
 		planet.planetImage = mars.planetLinkImage;
 		setLabels(planet, root);
+		
+		System.out.println("The user choose the planet : " + planet.planetName);
 	}
 
 	// Method to add Venus's infos to planet
@@ -102,6 +104,8 @@ public class Planet {
 		planet.planetName = venus.name;
 		planet.planetImage = venus.planetLinkImage;
 		setLabels(planet, root);
+		
+		System.out.println("The user choose the planet : " + planet.planetName);
 	}
 
 	// Method to add Mercury's infos to planet
@@ -110,6 +114,8 @@ public class Planet {
 		planet.planetName = mercure.name;
 		planet.planetImage = mercure.planetLinkImage;
 		setLabels(planet, root);
+		
+		System.out.println("The user choose the planet : " + planet.planetName);
 	}
 
 	// Method to set planet label and add the background to root (component of scene2)
