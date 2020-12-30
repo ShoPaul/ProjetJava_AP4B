@@ -61,7 +61,8 @@ public class Politician extends Faction {
 		factionInfosPolitician.getChildren().addAll(infoFactionLabel, boostFactionLabel);
 	}
 
-	public void onPoliticianButtonClick(ActionEvent e, BorderPane factionBorder) {
+	public void onPoliticianButtonClick(ActionEvent e, BorderPane factionBorder, Faction faction) {
 		factionBorder.setRight(factionInfosPolitician);
+		faction.setFactionName(factionName);
 	}
 }

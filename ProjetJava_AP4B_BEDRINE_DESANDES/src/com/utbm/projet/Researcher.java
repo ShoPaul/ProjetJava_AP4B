@@ -61,7 +61,8 @@ public class Researcher extends Faction {
 		factionInfosResearcher.getChildren().addAll(infoFactionLabel, boostFactionLabel);
 	}
 
-	public void onResearcherButtonClick(ActionEvent e, BorderPane factionBorder) {
+	public void onResearcherButtonClick(ActionEvent e, BorderPane factionBorder, Faction faction) {
 		factionBorder.setRight(factionInfosResearcher);
+		faction.setFactionName(factionName);
 	}
 }

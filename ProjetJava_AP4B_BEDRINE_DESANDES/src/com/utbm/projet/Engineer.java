@@ -61,8 +61,9 @@ public class Engineer extends Faction {
 		factionInfosEngineer.getChildren().addAll(infoFactionLabel, boostFactionLabel);
 	}
 
-	public void onEngineerButtonClick(ActionEvent e, BorderPane factionBorder) {
+	public void onEngineerButtonClick(ActionEvent e, BorderPane factionBorder, Faction faction) {
 		factionBorder.setRight(factionInfosEngineer);
+		faction.setFactionName(factionName);
 	}
 
 }

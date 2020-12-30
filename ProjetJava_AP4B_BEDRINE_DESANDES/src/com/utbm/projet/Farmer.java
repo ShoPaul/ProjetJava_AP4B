@@ -26,7 +26,6 @@ public class Farmer extends Faction {
 	public Label infoFactionLabel = new Label();
 	public Label boostFactionLabel = new Label();
 	public VBox factionInfosFarmer = new VBox(20);
-
 	public void farmerInfos() {
 		DropShadow dropShadow1 = new DropShadow();
 		dropShadow1.setRadius(1.9);
@@ -61,8 +60,9 @@ public class Farmer extends Faction {
 		factionInfosFarmer.getChildren().addAll(infoFactionLabel, boostFactionLabel);
 	}
 
-	public void onFarmerButtonClick(ActionEvent e, BorderPane factionBorder) {
+	public void onFarmerButtonClick(ActionEvent e, BorderPane factionBorder, Faction faction) {
 		factionBorder.setRight(factionInfosFarmer);
+		faction.setFactionName(factionName);
 	}
 
 }

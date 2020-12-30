@@ -28,7 +28,7 @@ public class MainApp extends Application {
 
 	private Scene scene1 = new Scene(planet.planetChoiceVBox, 1600, 900);
 	private Scene scene2 = new Scene(faction.factionBorder, 1600, 900);
-	//private Scene scene3 = new Scene(root, 1600, 900);
+	private Scene scene3 = new Scene(root, 1600, 900);
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -47,6 +47,8 @@ public class MainApp extends Application {
 		planet.marsButton.setOnAction((e) -> planet.onMarsButtonClick(e, primaryStage, root, scene2));
 		planet.venusButton.setOnAction((e) -> planet.onVenusButtonClick(e, primaryStage, root, scene2));
 		planet.mercuryButton.setOnAction((e) -> planet.onMercuryButtonClick(e, primaryStage, root, scene2));
+		
+		faction.nextToScene3Button.setOnAction((e) -> faction.nextScene(e, primaryStage, scene3, faction));
 
 		// Call method for placing bottom components in the BorderPane
 		setBottomComponents();

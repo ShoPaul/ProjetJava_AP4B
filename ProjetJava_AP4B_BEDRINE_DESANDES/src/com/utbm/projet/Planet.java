@@ -34,23 +34,9 @@ public class Planet {
 	public Button mercuryButton = new Button();
 	public VBox planetChoiceVBox = new VBox();
 	public HBox buttonsHBox = new HBox(100);
+	private Effects effects = new Effects();
 
 	public Planet() {
-		// Buttons's and text's effects
-		DropShadow dropShadow1 = new DropShadow();
-		dropShadow1.setRadius(5.0);
-		dropShadow1.setOffsetX(3.0);
-		dropShadow1.setOffsetY(5.0);
-		dropShadow1.setColor(Color.BLACK);
-		DropShadow dropShadow2 = new DropShadow();
-		dropShadow2.setRadius(1.9);
-		dropShadow2.setColor(Color.WHITE);
-		DropShadow dropShadow3 = new DropShadow();
-		dropShadow3.setRadius(8.0);
-		dropShadow3.setHeight(20.0);
-		dropShadow3.setWidth(20.0);
-		dropShadow3.setColor(Color.WHITE);
-
 		// Buttons's background
 		Image buttonsBackground = new Image(
 				this.getClass().getResourceAsStream("/resources/images/backgrounds/blackStarsBackground.jpg"));
@@ -66,7 +52,7 @@ public class Planet {
 		marsButton.setMinSize(100, 100);
 		marsButton.setCursor(Cursor.HAND);
 		marsButton.effectProperty()
-				.bind(Bindings.when(marsButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
+				.bind(Bindings.when(marsButton.hoverProperty()).then(effects.setButtonHoverEffect()).otherwise(effects.setButtonBasicEffect()));
 
 		// Set venusButton's effects, styles and infos
 		venusButton.setText("Venus");
@@ -79,7 +65,7 @@ public class Planet {
 		venusButton.setMinSize(100, 100);
 		venusButton.setCursor(Cursor.HAND);
 		venusButton.effectProperty()
-				.bind(Bindings.when(venusButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
+				.bind(Bindings.when(venusButton.hoverProperty()).then(effects.setButtonHoverEffect()).otherwise(effects.setButtonBasicEffect()));
 
 		// Set mercuryButton's effects, styles and infos
 		mercuryButton.setText("Mercure");
@@ -92,14 +78,14 @@ public class Planet {
 		mercuryButton.setMinSize(100, 100);
 		mercuryButton.setCursor(Cursor.HAND);
 		mercuryButton.effectProperty()
-				.bind(Bindings.when(mercuryButton.hoverProperty()).then(dropShadow3).otherwise(dropShadow2));
+				.bind(Bindings.when(mercuryButton.hoverProperty()).then(effects.setButtonHoverEffect()).otherwise(effects.setButtonBasicEffect()));
 
 		// Set planetChoiceLabel's effects, styles and infos
 		planetChoiceLabel.setText("Choisir une planète".toUpperCase());
 		planetChoiceLabel.setFont(
 				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 50));
 		planetChoiceLabel.setTextFill(Color.web("2E7BD8"));
-		planetChoiceLabel.setEffect(dropShadow1);
+		planetChoiceLabel.setEffect(effects.setTextEffect());
 	}
 
 	// Method to add Mars's infos to planet

@@ -61,7 +61,8 @@ public class Doctor extends Faction {
 		factionInfosDoctor.getChildren().addAll(infoFactionLabel, boostFactionLabel);
 	}
 
-	public void onDoctorButtonClick(ActionEvent e, BorderPane factionBorder) {
+	public void onDoctorButtonClick(ActionEvent e, BorderPane factionBorder, Faction faction) {
 		factionBorder.setRight(factionInfosDoctor);
+		faction.setFactionName(factionName);
 	}
 }

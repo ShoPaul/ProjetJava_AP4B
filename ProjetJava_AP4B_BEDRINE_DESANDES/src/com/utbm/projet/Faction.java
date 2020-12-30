@@ -1,10 +1,16 @@
 package com.utbm.projet;
 
+import javafx.beans.binding.Bindings;
+import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
@@ -15,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 public class Faction {
 
@@ -26,6 +33,8 @@ public class Faction {
 	private HBox factionButtons = new HBox(20);
 	private VBox factionInfos = new VBox(20);
 	private Label questionFactionLabel = new Label();
+	public Button nextToScene3Button = new Button();
+	private Effects effects = new Effects();
 
 	public Faction() {
 	}
@@ -43,6 +52,12 @@ public class Faction {
 	}
 
 	public String getFactionName() {
+		if (this.factionName != null) {
+			System.out.println("The user choose the faction : " + this.factionName);
+		} else {
+			System.out.println("Error, the user did not select a faction !");
+		}
+
 		return this.factionName;
 	}
 
@@ -55,12 +70,6 @@ public class Faction {
 	}
 
 	public void factionChoice(Faction faction) {
-		// Buttons's and text's effects
-		DropShadow dropShadow1 = new DropShadow();
-		dropShadow1.setRadius(5.0);
-		dropShadow1.setOffsetX(3.0);
-		dropShadow1.setOffsetY(5.0);
-
 		Engineer eng = new Engineer();
 		Doctor doc = new Doctor();
 		Farmer farm = new Farmer();
@@ -72,7 +81,7 @@ public class Faction {
 		faction.questionFactionLabel.setFont(
 				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 50));
 		faction.questionFactionLabel.setTextFill(Color.web("2E7BD8"));
-		faction.questionFactionLabel.setEffect(dropShadow1);
+		faction.questionFactionLabel.setEffect(effects.setTextEffect());
 
 		eng.engineerInfos();
 		doc.doctorInfos();
@@ -80,22 +89,45 @@ public class Faction {
 		pol.politicianInfos();
 		res.researcherInfos();
 
-		faction.factionButtons.getChildren().addAll(eng.engineerButton, doc.doctorButton, farm.farmerButton, pol.politicianButton, res.researcherButton);
+		faction.nextToScene3Button.setText("suivant".toUpperCase());
+		faction.nextToScene3Button.setFont(
+				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 50));
+		faction.nextToScene3Button.setTextFill(Color.WHITE);
+		faction.nextToScene3Button.setBackground(new Background(new BackgroundFill(Color.web("2E7BD8"), null, null)));
+		faction.nextToScene3Button.effectProperty().bind(Bindings.when(faction.nextToScene3Button.hoverProperty())
+				.then(effects.setButtonHoverEffect()).otherwise(effects.setButtonBasicEffect()));
+		faction.nextToScene3Button.setCursor(Cursor.HAND);
+		faction.nextToScene3Button.setMinSize(100, 50);
+
+		faction.factionButtons.getChildren().addAll(eng.engineerButton, doc.doctorButton, farm.farmerButton,
+				pol.politicianButton, res.researcherButton);
 		faction.factionButtons.setAlignment(Pos.CENTER);
 
 		faction.factionTopBorder.getChildren().addAll(faction.questionFactionLabel, faction.factionButtons);
 		faction.factionTopBorder.setAlignment(Pos.CENTER);
 
-		faction.factionBorder.setTop(factionTopBorder);
-		faction.factionBorder.setRight(factionInfos);
+		faction.factionBorder.setTop(faction.factionTopBorder);
+		faction.factionBorder.setRight(faction.factionInfos);
+		faction.factionBorder.setBottom(faction.nextToScene3Button);
+		BorderPane.setAlignment(faction.nextToScene3Button, Pos.CENTER);
+		BorderPane.setMargin(faction.nextToScene3Button, new Insets(0, 0, 100, 0));
 
 		faction.factionBorder.setBackground(new Background(new BackgroundImage(
-				new Image(this.getClass().getResourceAsStream("/resources/images/backgrounds/blackStarsBackground.jpg")),
+				new Image(
+						this.getClass().getResourceAsStream("/resources/images/backgrounds/blackStarsBackground.jpg")),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 				new BackgroundSize(0, 0, false, false, false, true))));
-		
-		eng.engineerButton.setOnAction((e) -> eng.onEngineerButtonClick(e, faction.factionBorder));
-		doc.doctorButton.setOnAction((e) -> doc.onDoctorButtonClick(e, faction.factionBorder));
-		farm.farmerButton.setOnAction((e) -> farm.onFarmerButtonClick(e, faction.factionBorder));
+
+		eng.engineerButton.setOnAction((e) -> eng.onEngineerButtonClick(e, faction.factionBorder, faction));
+		doc.doctorButton.setOnAction((e) -> doc.onDoctorButtonClick(e, faction.factionBorder, faction));
+		farm.farmerButton.setOnAction((e) -> farm.onFarmerButtonClick(e, faction.factionBorder, faction));
+		pol.politicianButton.setOnAction((e) -> pol.onPoliticianButtonClick(e, faction.factionBorder, faction));
+		res.researcherButton.setOnAction((e) -> res.onResearcherButtonClick(e, faction.factionBorder, faction));
+	}
+
+	public void nextScene(ActionEvent e, Stage primaryStage, Scene scene3, Faction faction) {
+		if (faction.getFactionName() != null) {
+			primaryStage.setScene(scene3);
+		}
 	}
 }
