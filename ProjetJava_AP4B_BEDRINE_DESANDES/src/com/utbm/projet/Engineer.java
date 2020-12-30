@@ -1,13 +1,19 @@
 package com.utbm.projet;
 
+import javafx.beans.binding.Bindings;
+import javafx.event.ActionEvent;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class Engineer extends Faction {
@@ -19,8 +25,18 @@ public class Engineer extends Faction {
 	public Label factionNameLabel = new Label();
 	public Label infoFactionLabel = new Label();
 	public Label boostFactionLabel = new Label();
+	private VBox factionInfosEngineer = new VBox(20);
 
 	public void engineerInfos() {
+		DropShadow dropShadow1 = new DropShadow();
+		dropShadow1.setRadius(1.9);
+		dropShadow1.setColor(Color.WHITE);
+		DropShadow dropShadow2 = new DropShadow();
+		dropShadow2.setRadius(8.0);
+		dropShadow2.setHeight(20.0);
+		dropShadow2.setWidth(20.0);
+		dropShadow2.setColor(Color.WHITE);
+		
 		factionName = "Ingénieur";
 		boostNumber = -15;
 		boostDomain = "Temps de construction";
@@ -29,6 +45,9 @@ public class Engineer extends Faction {
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 				new BackgroundSize(0, 0, false, false, false, true))));
 		engineerButton.setMinSize(100, 100);
+		engineerButton.setCursor(Cursor.HAND);
+		engineerButton.effectProperty()
+				.bind(Bindings.when(engineerButton.hoverProperty()).then(dropShadow2).otherwise(dropShadow1));
 
 		factionNameLabel.setText(factionName);
 		factionNameLabel.setTextFill(Color.web("2E7BD8"));
@@ -38,6 +57,12 @@ public class Engineer extends Faction {
 
 		boostFactionLabel.setText(boostDomain + " : " + boostNumber + " %");
 		boostFactionLabel.setTextFill(Color.web("2E7BD8"));
+		
+		factionInfosEngineer.getChildren().addAll(infoFactionLabel, boostFactionLabel);
+	}
+
+	public void onEngineerButtonClick(ActionEvent e, BorderPane factionBorder) {
+		factionBorder.setRight(factionInfosEngineer);
 	}
 
 }

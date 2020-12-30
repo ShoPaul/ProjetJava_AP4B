@@ -22,10 +22,10 @@ public class Faction {
 	private int boostNumber;
 	private String boostDomain;
 	public BorderPane factionBorder = new BorderPane();
-	public VBox factionTopBorder = new VBox();
-	public HBox factionButtons = new HBox(20);
-	public VBox factionInfos = new VBox(20);
-	public Label questionFactionLabel = new Label();
+	private VBox factionTopBorder = new VBox();
+	private HBox factionButtons = new HBox(20);
+	private VBox factionInfos = new VBox(20);
+	private Label questionFactionLabel = new Label();
 
 	public Faction() {
 	}
@@ -62,6 +62,10 @@ public class Faction {
 		dropShadow1.setOffsetY(5.0);
 
 		Engineer eng = new Engineer();
+		Doctor doc = new Doctor();
+		Farmer farm = new Farmer();
+		Politician pol = new Politician();
+		Researcher res = new Researcher();
 
 		// Set questionFactionLabel's infos
 		faction.questionFactionLabel.setText("Choisir une faction".toUpperCase());
@@ -69,14 +73,15 @@ public class Faction {
 				Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 50));
 		faction.questionFactionLabel.setTextFill(Color.web("2E7BD8"));
 		faction.questionFactionLabel.setEffect(dropShadow1);
-		System.out.println("OK");
+
 		eng.engineerInfos();
+		doc.doctorInfos();
+		farm.farmerInfos();
+		pol.politicianInfos();
+		res.researcherInfos();
 
-		faction.factionButtons.getChildren().addAll(eng.engineerButton);
+		faction.factionButtons.getChildren().addAll(eng.engineerButton, doc.doctorButton, farm.farmerButton, pol.politicianButton, res.researcherButton);
 		faction.factionButtons.setAlignment(Pos.CENTER);
-
-		faction.factionInfos.getChildren().addAll(eng.infoFactionLabel, eng.boostFactionLabel);
-		faction.factionInfos.setAlignment(Pos.TOP_LEFT);
 
 		faction.factionTopBorder.getChildren().addAll(faction.questionFactionLabel, faction.factionButtons);
 		faction.factionTopBorder.setAlignment(Pos.CENTER);
@@ -88,5 +93,9 @@ public class Faction {
 				new Image(this.getClass().getResourceAsStream("/resources/images/backgrounds/blackStarsBackground.jpg")),
 				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
 				new BackgroundSize(0, 0, false, false, false, true))));
+		
+		eng.engineerButton.setOnAction((e) -> eng.onEngineerButtonClick(e, faction.factionBorder));
+		doc.doctorButton.setOnAction((e) -> doc.onDoctorButtonClick(e, faction.factionBorder));
+		farm.farmerButton.setOnAction((e) -> farm.onFarmerButtonClick(e, faction.factionBorder));
 	}
 }
