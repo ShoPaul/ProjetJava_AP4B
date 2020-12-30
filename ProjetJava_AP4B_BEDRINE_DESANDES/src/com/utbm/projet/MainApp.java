@@ -49,6 +49,8 @@ public class MainApp extends Application {
 		planet.mercuryButton.setOnAction((e) -> planet.onMercuryButtonClick(e, primaryStage, root, scene2));
 		
 		faction.nextToScene3Button.setOnAction((e) -> faction.nextScene(e, primaryStage, scene3, faction));
+		
+		clt.cultureButton.setOnAction((e) -> clt.onCultureButtonClick(e, clt));
 
 		// Call method for placing bottom components in the BorderPane
 		setBottomComponents();
@@ -83,7 +85,7 @@ public class MainApp extends Application {
 
 	private void setBottomComponents() {
 		// Add buttons to two HBoxs
-		firstButtonRange.getChildren().addAll(res.button, pop.button, clt.button);
+		firstButtonRange.getChildren().addAll(res.button, pop.button, clt.cultureButton);
 		secondButtonRange.getChildren().addAll(med.button, lead.button);
 
 		// Set HBoxs's components alignment to the center

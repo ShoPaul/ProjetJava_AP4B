@@ -37,6 +37,8 @@ public class Planet {
 	private Effects effects = new Effects();
 
 	public Planet() {
+		ButtonPattern bp = new ButtonPattern ();
+		
 		// Buttons's background
 		Image buttonsBackground = new Image(
 				this.getClass().getResourceAsStream("/resources/images/backgrounds/blackStarsBackground.jpg"));
@@ -53,7 +55,8 @@ public class Planet {
 		marsButton.setCursor(Cursor.HAND);
 		marsButton.effectProperty()
 				.bind(Bindings.when(marsButton.hoverProperty()).then(effects.setButtonHoverEffect()).otherwise(effects.setButtonBasicEffect()));
-
+		bp.adaptButton(marsButton);
+		
 		// Set venusButton's effects, styles and infos
 		venusButton.setText("Venus");
 		venusButton.setFont(
@@ -66,6 +69,7 @@ public class Planet {
 		venusButton.setCursor(Cursor.HAND);
 		venusButton.effectProperty()
 				.bind(Bindings.when(venusButton.hoverProperty()).then(effects.setButtonHoverEffect()).otherwise(effects.setButtonBasicEffect()));
+		bp.adaptButton(venusButton);
 
 		// Set mercuryButton's effects, styles and infos
 		mercuryButton.setText("Mercure");
@@ -79,6 +83,7 @@ public class Planet {
 		mercuryButton.setCursor(Cursor.HAND);
 		mercuryButton.effectProperty()
 				.bind(Bindings.when(mercuryButton.hoverProperty()).then(effects.setButtonHoverEffect()).otherwise(effects.setButtonBasicEffect()));
+		bp.adaptButton(mercuryButton);
 
 		// Set planetChoiceLabel's effects, styles and infos
 		planetChoiceLabel.setText("Choisir une planète".toUpperCase());

@@ -1,7 +1,5 @@
 package com.utbm.projet;
 
-import java.util.*;
-
 import javafx.scene.control.Button;
 
 public class Research {

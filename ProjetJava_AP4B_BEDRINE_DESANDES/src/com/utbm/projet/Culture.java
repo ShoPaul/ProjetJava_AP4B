@@ -1,17 +1,16 @@
 package com.utbm.projet;
 
-import java.util.*;
-
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
 public class Culture {
 	
-	public Button button;
+	public Button cultureButton;
 
     Culture() {
-    	button = new Button ("Culture");
+    	cultureButton = new Button ("Culture");
     	ButtonPattern bp = new ButtonPattern ();
-    	bp.adaptButton(button);
+    	bp.adaptButton(cultureButton);
     }
 
     public void searchNewCulture() {
@@ -29,5 +28,11 @@ public class Culture {
 
     public enum listeCultures {
     }
+
+
+	public Object onCultureButtonClick(ActionEvent e, Culture clt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

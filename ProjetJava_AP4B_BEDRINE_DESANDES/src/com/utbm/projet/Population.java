@@ -1,12 +1,12 @@
 package com.utbm.projet;
 
-import java.util.*;
+import java.awt.List;
 
 import javafx.scene.control.Button;
 
 public class Population {
 	
-	private List<String> listColony;
+	private List listColony;
 	public Button button;
 	
     Population() {
@@ -15,12 +15,12 @@ public class Population {
     	bp.adaptButton(button);
     }    
 
-    public List<String> getListColony() {
+    public List getListColony() {
         // TODO implement here
         return null;
     }
 
-    public boolean listColonyIsEmpty(List<String> listColony) {
+    public boolean listColonyIsEmpty(List listColony) {
         // TODO implement here
         return false;
     }
