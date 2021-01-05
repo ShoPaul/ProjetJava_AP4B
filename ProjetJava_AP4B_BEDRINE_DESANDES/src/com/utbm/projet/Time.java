@@ -26,7 +26,7 @@ public class Time {
 	public Label clock;
 	public HBox dateLabels = new HBox(20);
 	
-	Time (){
+	Time (Economy eco){
 		DropShadow dropShadow = new DropShadow();
 		dropShadow.setRadius(5.0);
 		dropShadow.setOffsetX(3.0);
@@ -57,6 +57,7 @@ public class Time {
 				Month monthSystem = currentDate.getMonth();
 				SimpleDateFormat formatter= new SimpleDateFormat("HH:mm:ss");
 				Date clockSystem = new Date(System.currentTimeMillis());
+				
 
 				month.setText(monthSystem.toString());
 				day.setText(String.format("%d", daySystem));

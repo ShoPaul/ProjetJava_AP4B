@@ -80,7 +80,7 @@ public class MainApp extends Application {
 	}
 
 	private void setTopComponents() {
-		Time time = new Time();
+		Time time = new Time(eco);
 
 		// Resources, Time and planet info in the VBox presentation
 		presentation.getChildren().addAll(eco.economyLabels, planet.planetNameLabel, time.dateLabels);

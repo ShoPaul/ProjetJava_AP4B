@@ -48,4 +48,8 @@ public class Economy {
 		economyLabels.getChildren().addAll(carboneLabel, diazoteLabel, hydrogeneLabel, oxygeneLabel);
 		economyLabels.setAlignment(Pos.CENTER);
     }
+    
+    public void refreshEconomy() {
+    	
+    }
 }
