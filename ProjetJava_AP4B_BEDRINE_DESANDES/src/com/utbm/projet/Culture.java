@@ -33,13 +33,13 @@ public class Culture {
     public enum listeCultures {
     }
     
-    public void showCultureStage(Culture culture) {
-    	culture.cultureStage.show();
+    public void showCultureStage() {
+    	this.cultureStage.show();
     }
 
-	public void onCultureButtonClick(ActionEvent e, Culture clt) {
-		if (!clt.cultureStage.isShowing()) {
-			showCultureStage(clt);
+	public void onCultureButtonClick(ActionEvent e) {
+		if (!this.cultureStage.isShowing()) {
+			showCultureStage();
 			System.out.println("The user clicked on Culture Button. Culture's window is displayed.");
 		} else {
 			System.out.println("Error, Culture's window is already displayed.");

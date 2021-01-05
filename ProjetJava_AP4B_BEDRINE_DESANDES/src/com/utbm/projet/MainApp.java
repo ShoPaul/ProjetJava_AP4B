@@ -50,11 +50,11 @@ public class MainApp extends Application {
 		
 		faction.nextToScene3Button.setOnAction((e) -> faction.nextScene(e, primaryStage, scene3, faction));
 		
-		pop.populationButton.setOnAction((e) -> pop.onPopulationButtonClick(e, pop));
-		res.researchButton.setOnAction((e) -> res.onResearchButtonClick(e, res));
-		clt.cultureButton.setOnAction((e) -> clt.onCultureButtonClick(e, clt));
-		lead.leaderButton.setOnAction((e) -> lead.onLeaderButtonClick(e, lead));
-		med.medecineButton.setOnAction((e) -> med.onMedecineButtonClick(e, med));
+		pop.populationButton.setOnAction((e) -> pop.onPopulationButtonClick(e));
+		res.researchButton.setOnAction((e) -> res.onResearchButtonClick(e));
+		clt.cultureButton.setOnAction((e) -> clt.onCultureButtonClick(e));
+		lead.leaderButton.setOnAction((e) -> lead.onLeaderButtonClick(e));
+		med.medecineButton.setOnAction((e) -> med.onMedecineButtonClick(e));
 
 		// Call method for placing bottom components in the BorderPane
 		setBottomComponents();

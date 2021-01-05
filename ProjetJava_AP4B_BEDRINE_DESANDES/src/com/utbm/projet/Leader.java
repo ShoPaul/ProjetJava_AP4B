@@ -24,13 +24,13 @@ public class Leader{
     public enum listeDirigeants {
     }
     
-    public void showLeaderStage(Leader leader) {
-    	leader.leaderStage.show();
+    public void showLeaderStage() {
+    	this.leaderStage.show();
     }
 
-	public void onLeaderButtonClick(ActionEvent e, Leader lead) {
-		if (!lead.leaderStage.isShowing()) {
-			showLeaderStage(lead);
+	public void onLeaderButtonClick(ActionEvent e) {
+		if (!this.leaderStage.isShowing()) {
+			showLeaderStage();
 			System.out.println("The user clicked on Leader Button. Leader's window is displayed.");
 		} else {
 			System.out.println("Error, Leader's window is already displayed.");

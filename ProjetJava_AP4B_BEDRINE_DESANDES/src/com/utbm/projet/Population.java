@@ -30,13 +30,13 @@ public class Population {
         return false;
     }
     
-    public void showPopulationStage(Population population) {
-    	population.populationStage.show();
+    public void showPopulationStage() {
+    	this.populationStage.show();
     }
 
-	public void onPopulationButtonClick(ActionEvent e, Population pop) {
-		if (!pop.populationStage.isShowing()) {
-			showPopulationStage(pop);
+	public void onPopulationButtonClick(ActionEvent e) {
+		if (!this.populationStage.isShowing()) {
+			showPopulationStage();
 			System.out.println("The user clicked on Population Button. Population's window is displayed.");
 		} else {
 			System.out.println("Error, Population's window is already displayed.");

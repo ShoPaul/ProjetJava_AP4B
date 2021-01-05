@@ -32,13 +32,13 @@ public class Medecine {
     public enum listeMedicaments {
     }
     
-    public void showMedecineStage(Medecine medecine) {
-    	medecine.medecineStage.show();
+    public void showMedecineStage() {
+    	this.medecineStage.show();
     }
 
-	public void onMedecineButtonClick(ActionEvent e, Medecine med) {
-		if (!med.medecineStage.isShowing()) {
-			showMedecineStage(med);
+	public void onMedecineButtonClick(ActionEvent e) {
+		if (!this.medecineStage.isShowing()) {
+			showMedecineStage();
 			System.out.println("The user clicked on Medecine Button. Medecine's window is displayed.");
 		} else {
 			System.out.println("Error, Medecine's window is already displayed.");

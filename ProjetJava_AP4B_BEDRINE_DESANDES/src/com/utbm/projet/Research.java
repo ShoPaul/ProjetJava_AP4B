@@ -28,13 +28,13 @@ public class Research {
     public enum listeRecherches {
     }
     
-    public void showResearchStage(Research research) {
-    	research.researchStage.show();
+    public void showResearchStage() {
+    	this.researchStage.show();
     }
 
-	public void onResearchButtonClick(ActionEvent e, Research res) {
-		if (!res.researchStage.isShowing()) {
-			showResearchStage(res);
+	public void onResearchButtonClick(ActionEvent e) {
+		if (!this.researchStage.isShowing()) {
+			showResearchStage();
 			System.out.println("The user clicked on Research Button. Research's window is displayed.");
 		} else {
 			System.out.println("Error, Research's window is already displayed.");
