@@ -9,28 +9,19 @@ import javafx.stage.Stage;
 public class Colony {
 
     private String colonyName;
-    public Stage colonyStage = new Stage();
-    public Button colonyButton;
+    public static Stage colonyStage = new Stage();
+    public static Button colonyButton;    
     
     public List<String> listOutpost;
     
     Colony(String name) {
     	colonyName = name;
+    }
+    
+    public static void setButton () {
     	colonyButton = new Button ("Colony");
-		ButtonPattern bp = new ButtonPattern();
-		bp.adaptButton(colonyButton);
-    	colonyStage.setTitle("Survival on a planet: Colony Menu");
-    	colonyStage.setResizable(false);
-    }
-
-    public void setColonyName(String colonieName) {
-        // TODO implement here
-    }
-
-
-    public String getColonyName() {
-        // TODO implement here
-        return "";
+    	ButtonPattern bp = new ButtonPattern();
+    	bp.adaptButton(colonyButton);
     }
 
     public boolean listOupostIsEmpty(List<String> listColony) {
@@ -43,12 +34,14 @@ public class Colony {
         return null;
     }
     
-    public void showColonyStage() {
-    	this.colonyStage.show();
+    public static void showColonyStage() {
+    	colonyStage.setTitle("Survival on a planet: Colony Menu");
+    	colonyStage.setResizable(false);
+    	colonyStage.show();
     }
 
-	public void onColonyButtonClick(ActionEvent e) {
-		if (!this.colonyStage.isShowing()) {
+	public static void onColonyButtonClick(ActionEvent e) {
+		if (!colonyStage.isShowing()) {
 			showColonyStage();
 			System.out.println("The user clicked on Colony Button. Colony's window is displayed.");
 		} else {

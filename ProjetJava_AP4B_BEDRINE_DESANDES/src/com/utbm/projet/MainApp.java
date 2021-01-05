@@ -56,7 +56,9 @@ public class MainApp extends Application {
 		clt.cultureButton.setOnAction((e) -> clt.onCultureButtonClick(e));
 		lead.leaderButton.setOnAction((e) -> lead.onLeaderButtonClick(e));
 		med.medecineButton.setOnAction((e) -> med.onMedecineButtonClick(e));
-		col.colonyButton.setOnAction((e) -> col.onColonyButtonClick(e));
+		
+		Colony.setButton();
+		Colony.colonyButton.setOnAction((e) -> Colony.onColonyButtonClick(e));
 
 		// Call method for placing bottom components in the BorderPane
 		setBottomComponents();
