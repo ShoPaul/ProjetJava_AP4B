@@ -2,17 +2,22 @@ package com.utbm.projet;
 
 import java.awt.List;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class Population {
 	
 	private List listColony;
-	public Button button;
+	public Button populationButton;
+	public Stage populationStage = new Stage();
 	
     Population() {
-    	button = new Button ("Population");
+    	populationButton = new Button ("Population");
     	ButtonPattern bp = new ButtonPattern ();
-    	bp.adaptButton(button);
+    	bp.adaptButton(populationButton);
+    	populationStage.setTitle("Survival on a planet: Population Menu");
+    	populationStage.setResizable(false);
     }    
 
     public List getListColony() {
@@ -24,4 +29,18 @@ public class Population {
         // TODO implement here
         return false;
     }
+    
+    public void showPopulationStage(Population population) {
+    	population.populationStage.show();
+    }
+
+	public void onPopulationButtonClick(ActionEvent e, Population pop) {
+		if (!pop.populationStage.isShowing()) {
+			showPopulationStage(pop);
+			System.out.println("The user clicked on Population Button. Population's window is displayed.");
+		} else {
+			System.out.println("Error, Population's window is already displayed.");
+		}
+		
+	}
 }

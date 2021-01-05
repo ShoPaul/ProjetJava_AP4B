@@ -50,7 +50,11 @@ public class MainApp extends Application {
 		
 		faction.nextToScene3Button.setOnAction((e) -> faction.nextScene(e, primaryStage, scene3, faction));
 		
+		pop.populationButton.setOnAction((e) -> pop.onPopulationButtonClick(e, pop));
+		res.researchButton.setOnAction((e) -> res.onResearchButtonClick(e, res));
 		clt.cultureButton.setOnAction((e) -> clt.onCultureButtonClick(e, clt));
+		lead.leaderButton.setOnAction((e) -> lead.onLeaderButtonClick(e, lead));
+		med.medecineButton.setOnAction((e) -> med.onMedecineButtonClick(e, med));
 
 		// Call method for placing bottom components in the BorderPane
 		setBottomComponents();
@@ -85,8 +89,8 @@ public class MainApp extends Application {
 
 	private void setBottomComponents() {
 		// Add buttons to two HBoxs
-		firstButtonRange.getChildren().addAll(res.button, pop.button, clt.cultureButton);
-		secondButtonRange.getChildren().addAll(med.button, lead.button);
+		firstButtonRange.getChildren().addAll(res.researchButton, pop.populationButton, clt.cultureButton);
+		secondButtonRange.getChildren().addAll(med.medecineButton, lead.leaderButton);
 
 		// Set HBoxs's components alignment to the center
 		firstButtonRange.setAlignment(Pos.CENTER);
