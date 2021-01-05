@@ -3,23 +3,32 @@ package com.utbm.projet;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.utbm.projet.Culture.listeCultures;
-
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Culture {
 	
 	public Button cultureButton;
 	public Stage cultureStage = new Stage();
-	public Button vegetablesButton = new Button("Légumes");
+	public Button vegetablesButton = new Button(listeCultures.Vegetables.nameResearch);
+	public VBox cultureVbox = new VBox(20);
+	private Scene cultureScene = new Scene(cultureVbox, 400, 600);
 
     Culture() {
     	cultureButton = new Button ("Culture");
     	ButtonPattern bp = new ButtonPattern ();
     	bp.adaptButton(cultureButton);
+    	bp.adaptButton(vegetablesButton);
+    	cultureVbox.getChildren().addAll(vegetablesButton);
+    	cultureVbox.setAlignment(Pos.TOP_CENTER);
+    	VBox.setMargin(vegetablesButton, new Insets(20, 0, 0, 0));
     	cultureStage.setTitle("Survival on a planet: Culture Menu");
+    	cultureStage.setScene(cultureScene);
     	cultureStage.setResizable(false);
     }
 
@@ -28,8 +37,17 @@ public class Culture {
     }
 
     private void onVegetablesButtonClick(ActionEvent e, listeCultures vegetables, Economy eco) {
-    	eco(50, 50 ,50 ,50);
-		this.vegetablesButton.setVisible(false);
+    	if(eco.oxygeneNumber > vegetables.oxygeneCost && eco.diazoteNumber > vegetables.diazoteCost && eco.hydrogeneNumber > vegetables.hydrogeneCost && eco.carboneNumber > vegetables.carboneCost) {
+    		int newOxygeneNumber = eco.oxygeneNumber - vegetables.oxygeneCost;
+        	int newDiazoteNumber = eco.diazoteNumber - vegetables.diazoteCost;
+        	int newHydrogeneNumber = eco.hydrogeneNumber - vegetables.hydrogeneCost;
+        	int newCarboneNumber = eco.carboneNumber - vegetables.carboneCost;
+        	eco.setEconomy(newOxygeneNumber, newDiazoteNumber, newHydrogeneNumber, newCarboneNumber);
+    		this.vegetablesButton.setVisible(false);
+    		System.out.println("Vegetables research purchased !");
+    	} else {
+    		System.out.println("Error, the user doesn't have enough resources to purchase this research !");
+    	}
 	}
 
 	public void upgradeCulture() {

@@ -26,6 +26,7 @@ public class MainApp extends Application {
 	private Planet planet = new Planet();
 	private Faction faction = new Faction();
 	private Colony col = new Colony ("Pericles");
+	private Economy eco = new Economy(0, 0, 0, 0);
 
 	private Scene scene1 = new Scene(planet.planetChoiceVBox, 1200, 800);
 	private Scene scene2 = new Scene(faction.factionBorder, 1200, 800);
@@ -53,7 +54,7 @@ public class MainApp extends Application {
 		
 		pop.populationButton.setOnAction((e) -> pop.onPopulationButtonClick(e));
 		res.researchButton.setOnAction((e) -> res.onResearchButtonClick(e));
-		clt.cultureButton.setOnAction((e) -> clt.onCultureButtonClick(e));
+		clt.cultureButton.setOnAction((e) -> clt.onCultureButtonClick(e, eco));
 		lead.leaderButton.setOnAction((e) -> lead.onLeaderButtonClick(e));
 		med.medecineButton.setOnAction((e) -> med.onMedecineButtonClick(e));
 		
@@ -79,11 +80,10 @@ public class MainApp extends Application {
 	}
 
 	private void setTopComponents() {
-		Economy Eco = new Economy(50, 50, 50, 50);
 		Time time = new Time();
 
 		// Resources, Time and planet info in the VBox presentation
-		presentation.getChildren().addAll(Eco.economyLabels, planet.planetNameLabel, time.dateLabels);
+		presentation.getChildren().addAll(eco.economyLabels, planet.planetNameLabel, time.dateLabels);
 		presentation.setAlignment(Pos.CENTER);
 
 		BorderPane.setMargin(presentation, new Insets(30));

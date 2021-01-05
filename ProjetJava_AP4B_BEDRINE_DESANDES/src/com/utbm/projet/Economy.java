@@ -10,10 +10,10 @@ import javafx.scene.text.FontWeight;
 
 public class Economy {
 
-	public Label carboneLabel;
-	public Label diazoteLabel;
-	public Label hydrogeneLabel;
-	public Label oxygeneLabel;
+	public Label carboneLabel = new Label();
+	public Label diazoteLabel = new Label();
+	public Label hydrogeneLabel = new Label();
+	public Label oxygeneLabel = new Label();
 	public HBox economyLabels = new HBox(50);
 	
 	public int carboneNumber;
@@ -23,24 +23,15 @@ public class Economy {
 	
 	//Default constructor
 	
-    Economy() {
-    	carboneNumber = 0;
-    	diazoteNumber = 0;
-    	hydrogeneNumber = 0;
-    	oxygeneNumber = 0;
-    }
-
-    Economy(int cb, int da, int hy, int ox){
+	Economy(int ox, int da, int hy, int cb){
     	carboneNumber = cb;
     	diazoteNumber = da;
     	hydrogeneNumber = hy;
     	oxygeneNumber = ox;
-    	
-    	carboneLabel = new Label();
-    	diazoteLabel = new Label();
-    	hydrogeneLabel = new Label();
-    	oxygeneLabel = new Label();
-    	
+    	setEconomy(cb, da, hy, ox);
+    }
+    
+    public void setEconomy(int cb, int da, int hy, int ox) {
     	carboneLabel.setText("Carbone :	" + carboneNumber);
 		carboneLabel.setFont(Font.font(getClass().getResource("/resources/fonts/nasa.ttf").toString(), FontWeight.BOLD, 12));
 		carboneLabel.setTextFill(Color.WHITE);
