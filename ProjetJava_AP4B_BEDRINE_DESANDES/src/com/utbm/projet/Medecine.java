@@ -34,6 +34,7 @@ public class Medecine {
     
     public void showMedecineStage() {
     	this.medecineStage.show();
+    	this.medecineStage.centerOnScreen();
     }
 
 	public void onMedecineButtonClick(ActionEvent e) {

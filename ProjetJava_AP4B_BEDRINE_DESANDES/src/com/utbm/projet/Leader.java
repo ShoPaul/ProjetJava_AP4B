@@ -26,6 +26,7 @@ public class Leader{
     
     public void showLeaderStage() {
     	this.leaderStage.show();
+    	this.leaderStage.centerOnScreen();
     }
 
 	public void onLeaderButtonClick(ActionEvent e) {

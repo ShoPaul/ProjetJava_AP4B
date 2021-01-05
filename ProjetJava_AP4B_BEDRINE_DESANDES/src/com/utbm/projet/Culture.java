@@ -35,6 +35,7 @@ public class Culture {
     
     public void showCultureStage() {
     	this.cultureStage.show();
+    	this.cultureStage.centerOnScreen();
     }
 
 	public void onCultureButtonClick(ActionEvent e) {
