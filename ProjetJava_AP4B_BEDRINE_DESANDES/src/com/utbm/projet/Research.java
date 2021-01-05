@@ -30,6 +30,7 @@ public class Research {
     
     public void showResearchStage() {
     	this.researchStage.show();
+    	this.researchStage.centerOnScreen();
     }
 
 	public void onResearchButtonClick(ActionEvent e) {

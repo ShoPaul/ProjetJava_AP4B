@@ -75,6 +75,7 @@ public class MainApp extends Application {
 
 		// Show the window
 		primaryStage.show();
+		primaryStage.centerOnScreen();
 	}
 
 	private void setTopComponents() {
