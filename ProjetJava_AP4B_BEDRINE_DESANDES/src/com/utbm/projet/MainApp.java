@@ -25,6 +25,7 @@ public class MainApp extends Application {
 	private Population pop = new Population();
 	private Planet planet = new Planet();
 	private Faction faction = new Faction();
+	private Colony col = new Colony ("Pericles");
 
 	private Scene scene1 = new Scene(planet.planetChoiceVBox, 1200, 800);
 	private Scene scene2 = new Scene(faction.factionBorder, 1200, 800);
@@ -55,6 +56,7 @@ public class MainApp extends Application {
 		clt.cultureButton.setOnAction((e) -> clt.onCultureButtonClick(e));
 		lead.leaderButton.setOnAction((e) -> lead.onLeaderButtonClick(e));
 		med.medecineButton.setOnAction((e) -> med.onMedecineButtonClick(e));
+		col.colonyButton.setOnAction((e) -> col.onColonyButtonClick(e));
 
 		// Call method for placing bottom components in the BorderPane
 		setBottomComponents();
@@ -90,7 +92,7 @@ public class MainApp extends Application {
 	private void setBottomComponents() {
 		// Add buttons to two HBoxs
 		firstButtonRange.getChildren().addAll(res.researchButton, pop.populationButton, clt.cultureButton);
-		secondButtonRange.getChildren().addAll(med.medecineButton, lead.leaderButton);
+		secondButtonRange.getChildren().addAll(med.medecineButton, lead.leaderButton, col.colonyButton);
 
 		// Set HBoxs's components alignment to the center
 		firstButtonRange.setAlignment(Pos.CENTER);
