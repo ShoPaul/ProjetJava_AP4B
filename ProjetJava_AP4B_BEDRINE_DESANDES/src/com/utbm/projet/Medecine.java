@@ -43,7 +43,6 @@ public class Medecine {
 		} else {
 			System.out.println("Error, Medecine's window is already displayed.");
 		}
-		
 	}
 
 }
