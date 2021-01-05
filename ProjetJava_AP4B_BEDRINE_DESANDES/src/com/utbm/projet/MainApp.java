@@ -26,9 +26,9 @@ public class MainApp extends Application {
 	private Planet planet = new Planet();
 	private Faction faction = new Faction();
 
-	private Scene scene1 = new Scene(planet.planetChoiceVBox, 1600, 900);
-	private Scene scene2 = new Scene(faction.factionBorder, 1600, 900);
-	private Scene scene3 = new Scene(root, 1600, 900);
+	private Scene scene1 = new Scene(planet.planetChoiceVBox, 1200, 800);
+	private Scene scene2 = new Scene(faction.factionBorder, 1200, 800);
+	private Scene scene3 = new Scene(root, 1200, 800);
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
