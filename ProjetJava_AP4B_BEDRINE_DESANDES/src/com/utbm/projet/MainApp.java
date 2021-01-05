@@ -33,7 +33,7 @@ public class MainApp extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// Icon and background of the App
+		// Icon and background of the app
 		Image icon16 = new Image(this.getClass().getResourceAsStream("/resources/images/icon/icon16.png"));
 		Image icon24 = new Image(this.getClass().getResourceAsStream("/resources/images/icon/icon24.png"));
 		Image icon32 = new Image(this.getClass().getResourceAsStream("/resources/images/icon/icon32.png"));
