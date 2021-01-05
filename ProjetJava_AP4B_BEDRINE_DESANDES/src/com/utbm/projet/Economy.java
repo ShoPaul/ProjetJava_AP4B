@@ -16,10 +16,10 @@ public class Economy {
 	public Label oxygeneLabel;
 	public HBox economyLabels = new HBox(50);
 	
-	private int carboneNumber;
-	private int diazoteNumber;
-	private int hydrogeneNumber;
-	private int oxygeneNumber;
+	public int carboneNumber;
+	public int diazoteNumber;
+	public int hydrogeneNumber;
+	public int oxygeneNumber;
 	
 	//Default constructor
 	
