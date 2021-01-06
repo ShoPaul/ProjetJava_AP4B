@@ -60,7 +60,7 @@ public class Economy {
 		oxygeneLabel.setTextFill(Color.WHITE);
     }
     
-    public void refreshEconomy() {
+    public void refreshEconomy(Economy eco, Culture clt) {
     	Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000), new EventHandler<ActionEvent>() {
 
 			@Override
@@ -70,6 +70,7 @@ public class Economy {
 				hydrogeneNumber += hydrogeneProdSeconde;
 				oxygeneNumber += oxygeneProdSeconde;
 				setEconomy(carboneNumber, diazoteNumber, hydrogeneNumber, oxygeneNumber);
+				clt.searchNewCulture(eco);
 			}
     		
     	}));

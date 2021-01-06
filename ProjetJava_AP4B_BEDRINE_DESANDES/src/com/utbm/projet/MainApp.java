@@ -81,7 +81,7 @@ public class MainApp extends Application {
 
 	private void setTopComponents() {
 		Time time = new Time(eco);
-		eco.refreshEconomy();
+		eco.refreshEconomy(eco, clt);
 
 		// Resources, Time and planet info in the VBox presentation
 		presentation.getChildren().addAll(eco.economyLabels, planet.planetNameLabel, time.dateLabels);
