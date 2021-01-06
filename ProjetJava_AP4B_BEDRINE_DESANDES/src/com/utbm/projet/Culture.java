@@ -9,8 +9,15 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Culture {
@@ -25,7 +32,7 @@ public class Culture {
 	private Label vegetablesInfosProd = new Label("test");
 	private VBox vegetablesInfosVBox = new VBox(20);
 	private HBox vegetablesHBox = new HBox(20);
-	
+
 	private Button fruitsButton = new Button(listeCultures.Fruits.nameResearch);
 	private Label fruitsInfosCost = new Label();
 	private Label fruitsInfosProd = new Label();
@@ -41,16 +48,16 @@ public class Culture {
 
 		bp.adaptButton(vegetablesButton);
 		bp.adaptButton(fruitsButton);
-		
+
 		setLabelsCultureInfos(vegetablesInfosCost, vegetablesInfosProd, vegetablesInfosVBox, listeCultures.Vegetables);
 		setLabelsCultureInfos(fruitsInfosCost, fruitsInfosProd, fruitsInfosVBox, listeCultures.Fruits);
 
 		vegetablesHBox.getChildren().addAll(vegetablesButton, vegetablesInfosVBox);
 		vegetablesHBox.setAlignment(Pos.CENTER);
-		
+
 		fruitsHBox.getChildren().addAll(fruitsButton, fruitsInfosVBox);
 		fruitsHBox.setAlignment(Pos.CENTER);
-		
+
 		cultureVbox.getChildren().addAll(vegetablesHBox, fruitsHBox);
 		cultureVbox.setAlignment(Pos.TOP_CENTER);
 		VBox.setMargin(vegetablesHBox, new Insets(20, 0, 0, 0));
@@ -59,14 +66,12 @@ public class Culture {
 		cultureStage.setScene(cultureScene);
 		cultureStage.setResizable(false);
 	}
-	
+
 	private void setLabelsCultureInfos(Label infosCost, Label infosProd, VBox vboxInfo, listeCultures cultureSearch) {
-		infosCost.setText("Coût : " + cultureSearch.oxygeneCost + " ox, "
-				+ cultureSearch.diazoteCost + " dia, " + cultureSearch.hydrogeneCost + " hyd, "
-				+ cultureSearch.carboneCost + " car");
-		infosProd.setText("Production : " + cultureSearch.oxygeneProd + " ox, "
-				+ cultureSearch.diazoteProd + " dia, " + cultureSearch.hydrogeneProd + " hyd, "
-				+ cultureSearch.carboneProd + " car");
+		infosCost.setText("Coût : " + cultureSearch.oxygeneCost + " ox, " + cultureSearch.diazoteCost + " dia, "
+				+ cultureSearch.hydrogeneCost + " hyd, " + cultureSearch.carboneCost + " car");
+		infosProd.setText("Production : " + cultureSearch.oxygeneProd + " ox, " + cultureSearch.diazoteProd + " dia, "
+				+ cultureSearch.hydrogeneProd + " hyd, " + cultureSearch.carboneProd + " car");
 		vboxInfo.getChildren().addAll(infosCost, infosProd);
 		vboxInfo.setAlignment(Pos.CENTER_LEFT);
 	}
@@ -83,13 +88,19 @@ public class Culture {
 			eco.diazoteNumber -= fruits.diazoteCost;
 			eco.hydrogeneNumber -= fruits.hydrogeneCost;
 			eco.carboneNumber -= fruits.carboneCost;
-			
+
 			eco.oxygeneProdSeconde += fruits.oxygeneProd;
 			eco.diazoteProdSeconde += fruits.diazoteProd;
 			eco.hydrogeneProdSeconde += fruits.hydrogeneProd;
 			eco.carboneProdSeconde += fruits.carboneProd;
+
+			fruitsButton.setBackground(new Background(new BackgroundImage(
+					new Image(this.getClass().getResourceAsStream("/resources/images/backgrounds/greyScreen.jpg")),
+					BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+					new BackgroundSize(0, 0, false, false, false, true))));
+			fruitsButton.setTextFill(Color.WHITE);
 			
-			this.fruitsButton.setVisible(false);
+			fruitsButton.setDisable(true);
 			System.out.println("Fruits research purchased !");
 		} else {
 			System.out.println("Error, the user doesn't have enough resources to purchase this research !");
@@ -103,13 +114,19 @@ public class Culture {
 			eco.diazoteNumber -= vegetables.diazoteCost;
 			eco.hydrogeneNumber -= vegetables.hydrogeneCost;
 			eco.carboneNumber -= vegetables.carboneCost;
-			
+
 			eco.oxygeneProdSeconde += vegetables.oxygeneProd;
 			eco.diazoteProdSeconde += vegetables.diazoteProd;
 			eco.hydrogeneProdSeconde += vegetables.hydrogeneProd;
 			eco.carboneProdSeconde += vegetables.carboneProd;
+
+			vegetablesButton.setBackground(new Background(new BackgroundImage(
+					new Image(this.getClass().getResourceAsStream("/resources/images/backgrounds/greyScreen.jpg")),
+					BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+					new BackgroundSize(0, 0, false, false, false, true))));
+			vegetablesButton.setTextFill(Color.WHITE);
 			
-			this.vegetablesButton.setVisible(false);
+			vegetablesButton.setDisable(true);
 			System.out.println("Vegetables research purchased !");
 		} else {
 			System.out.println("Error, the user doesn't have enough resources to purchase this research !");
@@ -210,7 +227,7 @@ public class Culture {
 
 	public void onCultureButtonClick(ActionEvent e, Economy eco) {
 		if (!this.cultureStage.isShowing()) {
-			//this.searchNewCulture(eco);
+			// this.searchNewCulture(eco);
 			this.showCultureStage();
 			System.out.println("The user clicked on Culture Button. Culture's window is displayed.");
 		} else {
