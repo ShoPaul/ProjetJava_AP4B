@@ -26,7 +26,7 @@ public class MainApp extends Application {
 	private Planet planet = new Planet();
 	private Faction faction = new Faction();
 	private Colony col = new Colony ("Pericles");
-	private Economy eco = new Economy(0, 0, 0, 0);
+	private Economy eco = new Economy(50, 50, 50, 50);
 
 	private Scene scene1 = new Scene(planet.planetChoiceVBox, 1200, 800);
 	private Scene scene2 = new Scene(faction.factionBorder, 1200, 800);

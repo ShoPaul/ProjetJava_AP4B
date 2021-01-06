@@ -38,11 +38,11 @@ public class Culture {
 
     private void onVegetablesButtonClick(ActionEvent e, listeCultures vegetables, Economy eco) {
     	if(eco.oxygeneNumber > vegetables.oxygeneCost && eco.diazoteNumber > vegetables.diazoteCost && eco.hydrogeneNumber > vegetables.hydrogeneCost && eco.carboneNumber > vegetables.carboneCost) {
-    		int newOxygeneNumber = eco.oxygeneNumber - vegetables.oxygeneCost;
-        	int newDiazoteNumber = eco.diazoteNumber - vegetables.diazoteCost;
-        	int newHydrogeneNumber = eco.hydrogeneNumber - vegetables.hydrogeneCost;
-        	int newCarboneNumber = eco.carboneNumber - vegetables.carboneCost;
-        	eco.setEconomy(newOxygeneNumber, newDiazoteNumber, newHydrogeneNumber, newCarboneNumber);
+    		eco.oxygeneNumber -=  vegetables.oxygeneCost;
+    		eco.diazoteNumber -=  vegetables.diazoteCost;
+        	eco.hydrogeneNumber -=  vegetables.hydrogeneCost;
+        	eco.carboneNumber -=  vegetables.carboneCost;
+        	eco.oxygeneProdSeconde += vegetables.oxygeneProd;
     		this.vegetablesButton.setVisible(false);
     		System.out.println("Vegetables research purchased !");
     	} else {

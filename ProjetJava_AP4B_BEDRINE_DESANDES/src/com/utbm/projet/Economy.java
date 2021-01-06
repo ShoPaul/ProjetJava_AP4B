@@ -27,10 +27,10 @@ public class Economy {
 	public int hydrogeneNumber;
 	public int oxygeneNumber;
 	
-	public int carboneProdSeconde = 5;
-	public int diazoteProdSeconde = 5;
-	public int hydrogeneProdSeconde = 5;
-	public int oxygeneProdSeconde = 5;
+	public int carboneProdSeconde;
+	public int diazoteProdSeconde;
+	public int hydrogeneProdSeconde;
+	public int oxygeneProdSeconde;
 	
 	//Default constructor
 	
@@ -39,6 +39,10 @@ public class Economy {
     	diazoteNumber = da;
     	hydrogeneNumber = hy;
     	oxygeneNumber = ox;
+    	carboneProdSeconde = 0;
+    	diazoteProdSeconde = 0;
+    	hydrogeneProdSeconde = 0;
+    	oxygeneProdSeconde = 0;
     }
     
     public void setEconomy(int cb, int da, int hy, int ox) {
