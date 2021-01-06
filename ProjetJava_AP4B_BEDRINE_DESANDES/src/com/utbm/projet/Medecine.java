@@ -2,6 +2,7 @@ package com.utbm.projet;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Medecine {
@@ -37,9 +38,10 @@ public class Medecine {
     	this.medecineStage.centerOnScreen();
     }
 
-	public void onMedecineButtonClick(ActionEvent e) {
+	public void onMedecineButtonClick(ActionEvent e, Economy eco, BorderPane root) {
 		if (!this.medecineStage.isShowing()) {
 			showMedecineStage();
+			root.setDisable(true);
 			System.out.println("The user clicked on Medecine Button. Medecine's window is displayed.");
 		} else {
 			System.out.println("Error, Medecine's window is already displayed.");

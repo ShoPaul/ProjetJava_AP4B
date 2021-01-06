@@ -4,6 +4,7 @@ import java.util.*;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Colony {
@@ -40,9 +41,10 @@ public class Colony {
     	colonyStage.show();
     }
 
-	public static void onColonyButtonClick(ActionEvent e) {
+	public static void onColonyButtonClick(ActionEvent e, BorderPane root) {
 		if (!colonyStage.isShowing()) {
 			showColonyStage();
+			//root.setDisable(true);
 			System.out.println("The user clicked on Colony Button. Colony's window is displayed.");
 		} else {
 			System.out.println("Error, Colony's window is already displayed.");

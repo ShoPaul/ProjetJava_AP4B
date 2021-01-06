@@ -4,6 +4,7 @@ import java.awt.List;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Population {
@@ -34,9 +35,10 @@ public class Population {
     	this.populationStage.show();
     }
 
-	public void onPopulationButtonClick(ActionEvent e) {
+	public void onPopulationButtonClick(ActionEvent e, BorderPane root) {
 		if (!this.populationStage.isShowing()) {
 			showPopulationStage();
+			root.setDisable(true);
 			System.out.println("The user clicked on Population Button. Population's window is displayed.");
 		} else {
 			System.out.println("Error, Population's window is already displayed.");

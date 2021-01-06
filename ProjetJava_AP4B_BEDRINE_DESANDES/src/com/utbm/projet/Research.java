@@ -2,6 +2,7 @@ package com.utbm.projet;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Research {
@@ -33,9 +34,10 @@ public class Research {
     	this.researchStage.centerOnScreen();
     }
 
-	public void onResearchButtonClick(ActionEvent e) {
+	public void onResearchButtonClick(ActionEvent e, Economy eco, BorderPane root) {
 		if (!this.researchStage.isShowing()) {
 			showResearchStage();
+			root.setDisable(true);
 			System.out.println("The user clicked on Research Button. Research's window is displayed.");
 		} else {
 			System.out.println("Error, Research's window is already displayed.");

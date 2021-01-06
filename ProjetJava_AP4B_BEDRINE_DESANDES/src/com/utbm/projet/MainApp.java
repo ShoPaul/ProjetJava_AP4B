@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class MainApp extends Application {
 
@@ -52,14 +53,20 @@ public class MainApp extends Application {
 		
 		faction.nextToScene3Button.setOnAction((e) -> faction.nextScene(e, primaryStage, scene3, faction));
 		
-		pop.populationButton.setOnAction((e) -> pop.onPopulationButtonClick(e));
-		res.researchButton.setOnAction((e) -> res.onResearchButtonClick(e));
-		clt.cultureButton.setOnAction((e) -> clt.onCultureButtonClick(e, eco));
-		lead.leaderButton.setOnAction((e) -> lead.onLeaderButtonClick(e));
-		med.medecineButton.setOnAction((e) -> med.onMedecineButtonClick(e));
+		pop.populationButton.setOnAction((e) -> pop.onPopulationButtonClick(e, root));
+		pop.populationStage.setOnCloseRequest((e) -> onStageClose(e, root));
+		res.researchButton.setOnAction((e) -> res.onResearchButtonClick(e, eco, root));
+		res.researchStage.setOnCloseRequest((e) -> onStageClose(e, root));
+		clt.cultureButton.setOnAction((e) -> clt.onCultureButtonClick(e, eco, root));
+		clt.cultureStage.setOnCloseRequest((e) -> onStageClose(e, root));
+		lead.leaderButton.setOnAction((e) -> lead.onLeaderButtonClick(e, root));
+		lead.leaderStage.setOnCloseRequest((e) -> onStageClose(e, root));
+		med.medecineButton.setOnAction((e) -> med.onMedecineButtonClick(e, eco, root));
+		med.medecineStage.setOnCloseRequest((e) -> onStageClose(e, root));
 		
 		Colony.setButton();
-		Colony.colonyButton.setOnAction((e) -> Colony.onColonyButtonClick(e));
+		Colony.colonyButton.setOnAction((e) -> Colony.onColonyButtonClick(e, root));
+		//col.colonyButton.setOnCloseRequest((e) -> onStageClose(e, root));
 
 		// Call method for placing bottom components in the BorderPane
 		setBottomComponents();
@@ -77,6 +84,10 @@ public class MainApp extends Application {
 		// Show the window
 		primaryStage.show();
 		primaryStage.centerOnScreen();
+	}
+
+	private void onStageClose(WindowEvent e, BorderPane root) {
+		root.setDisable(false);
 	}
 
 	private void setTopComponents() {

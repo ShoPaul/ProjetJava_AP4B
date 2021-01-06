@@ -2,6 +2,7 @@ package com.utbm.projet;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Leader{
@@ -29,9 +30,10 @@ public class Leader{
     	this.leaderStage.centerOnScreen();
     }
 
-	public void onLeaderButtonClick(ActionEvent e) {
+	public void onLeaderButtonClick(ActionEvent e, BorderPane root) {
 		if (!this.leaderStage.isShowing()) {
 			showLeaderStage();
+			root.setDisable(true);
 			System.out.println("The user clicked on Leader Button. Leader's window is displayed.");
 		} else {
 			System.out.println("Error, Leader's window is already displayed.");

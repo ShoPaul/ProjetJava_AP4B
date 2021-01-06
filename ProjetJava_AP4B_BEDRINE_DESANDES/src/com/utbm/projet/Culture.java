@@ -15,6 +15,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -225,10 +226,10 @@ public class Culture {
 		this.cultureStage.centerOnScreen();
 	}
 
-	public void onCultureButtonClick(ActionEvent e, Economy eco) {
+	public void onCultureButtonClick(ActionEvent e, Economy eco, BorderPane root) {
 		if (!this.cultureStage.isShowing()) {
-			// this.searchNewCulture(eco);
 			this.showCultureStage();
+			root.setDisable(true);
 			System.out.println("The user clicked on Culture Button. Culture's window is displayed.");
 		} else {
 			System.out.println("Error, Culture's window is already displayed.");
