@@ -1,6 +1,10 @@
 package com.utbm.projet;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,6 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 
 public class MainApp extends Application {
 
@@ -26,7 +31,6 @@ public class MainApp extends Application {
 	private Population pop = new Population();
 	private Planet planet = new Planet();
 	private Faction faction = new Faction();
-	private Colony col = new Colony ("Pericles");
 	private Economy eco = new Economy(50, 50, 50, 50);
 
 	private Scene scene1 = new Scene(planet.planetChoiceVBox, 1200, 800);
@@ -64,9 +68,6 @@ public class MainApp extends Application {
 		med.medecineButton.setOnAction((e) -> med.onMedecineButtonClick(e, eco, root));
 		med.medecineStage.setOnCloseRequest((e) -> onStageClose(e, root));
 		
-		Colony.setButton();
-		Colony.colonyButton.setOnAction((e) -> Colony.onColonyButtonClick(e, root));
-		//col.colonyButton.setOnCloseRequest((e) -> onStageClose(e, root));
 
 		// Call method for placing bottom components in the BorderPane
 		setBottomComponents();
@@ -80,7 +81,7 @@ public class MainApp extends Application {
 		primaryStage.setFullScreen(false);
 		primaryStage.setResizable(true);
 		primaryStage.setFullScreenExitKeyCombination(KeyCombination.valueOf("F11"));
-
+		
 		// Show the window
 		primaryStage.show();
 		primaryStage.centerOnScreen();
@@ -91,11 +92,12 @@ public class MainApp extends Application {
 	}
 
 	private void setTopComponents() {
-		Time time = new Time(eco);
+		Time time = new Time();
 		eco.refreshEconomy(eco, clt, res);
+		pop.refreshPopulation(pop,eco);
 
 		// Resources, Time and planet info in the VBox presentation
-		presentation.getChildren().addAll(eco.economyLabels, planet.planetNameLabel, time.dateLabels);
+		presentation.getChildren().addAll(eco.economyLabels, pop.popBox, planet.planetNameLabel, time.dateLabels);
 		presentation.setAlignment(Pos.CENTER);
 
 		BorderPane.setMargin(presentation, new Insets(30));
@@ -107,7 +109,7 @@ public class MainApp extends Application {
 	private void setBottomComponents() {
 		// Add buttons to two HBoxs
 		firstButtonRange.getChildren().addAll(res.researchButton, pop.populationButton, clt.cultureButton);
-		secondButtonRange.getChildren().addAll(med.medecineButton, lead.leaderButton, col.colonyButton);
+		secondButtonRange.getChildren().addAll(med.medecineButton, lead.leaderButton);
 
 		// Set HBoxs's components alignment to the center
 		firstButtonRange.setAlignment(Pos.CENTER);

@@ -26,7 +26,7 @@ public class Time {
 	public Label clock;
 	public HBox dateLabels = new HBox(20);
 	
-	Time (Economy eco){
+	Time (){
 		DropShadow dropShadow = new DropShadow();
 		dropShadow.setRadius(5.0);
 		dropShadow.setOffsetX(3.0);
