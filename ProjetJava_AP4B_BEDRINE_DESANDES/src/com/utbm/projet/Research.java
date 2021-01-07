@@ -3,8 +3,6 @@ package com.utbm.projet;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.utbm.projet.Culture.listeCultures;
-
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -30,7 +28,7 @@ public class Research {
 	public VBox researchVBox = new VBox(20);
 	private Scene researchScene = new Scene(researchVBox, 400, 600);
 	
-	public Button fertileLandButton = new Button(listeResearch.FertileLand1.nameResearch);
+	public Button fertileLandButton = new Button();
 	private Label fertileLandInfosCost = new Label();
 	private Label fertileLandInfosProd = new Label();
 	private VBox fertileLandInfosVBox = new VBox(20);
@@ -45,7 +43,10 @@ public class Research {
     	
     	bp.adaptButton(fertileLandButton);
     	
-    	setLabelsInfos(fertileLandInfosCost, fertileLandInfosProd, fertileLandInfosVBox, listeResearch.FertileLand1);
+    	setLabelsInfos(fertileLandButton, fertileLandInfosCost, fertileLandInfosProd, fertileLandInfosVBox, listeResearch.FertileLand1);
+    	
+    	fertileLandInfosVBox.getChildren().addAll(fertileLandInfosCost, fertileLandInfosProd);
+    	fertileLandInfosVBox.setAlignment(Pos.CENTER_LEFT);
     	
     	fertileLandHBox.getChildren().addAll(fertileLandButton, fertileLandInfosVBox);
     	fertileLandHBox.setAlignment(Pos.CENTER);
@@ -59,49 +60,65 @@ public class Research {
     	researchStage.setResizable(false);
     }
 
-    private void setLabelsInfos(Label infosCost, Label infosProd, VBox vboxInfo,
+    private void setLabelsInfos(Button button, Label infosCost, Label infosProd, VBox vboxInfo,
 			listeResearch research) {
+    	button.setText(research.nameResearch);
     	infosCost.setText("Coût : " + research.oxygeneCost + " ox, " + research.diazoteCost + " dia, "
 				+ research.hydrogeneCost + " hyd, " + research.carboneCost + " car");
 		infosProd.setText("Production : " + research.oxygeneProd + " ox, " + research.diazoteProd + " dia, "
 				+ research.hydrogeneProd + " hyd, " + research.carboneProd + " car");
-		vboxInfo.getChildren().addAll(infosCost, infosProd);
-		vboxInfo.setAlignment(Pos.CENTER_LEFT);
 	}
     
     public void searchNewResearch(Economy eco) {
-    	if (this.fertileLandButton.getText() == listeResearch.FertileLand1.nameResearch) {
-    		this.fertileLandButton.setOnAction((e) -> this.onFertileLandButtonClick(e, listeResearch.FertileLand1, eco));
+    	this.fertileLandButton.setOnAction((e) -> this.onFertileLandButtonClick(e, eco));
+	}
+
+	private void onFertileLandButtonClick(ActionEvent e, Economy eco) {	
+		if (this.fertileLandButton.getText() == listeResearch.FertileLand1.nameResearch) {
+    		if (setEconomy(eco, listeResearch.FertileLand1)) {
+    			setLabelsInfos(fertileLandButton, fertileLandInfosCost, fertileLandInfosProd, fertileLandInfosVBox, listeResearch.FertileLand2);
+    		}
     	} else if (this.fertileLandButton.getText() == listeResearch.FertileLand2.nameResearch) {
-    		this.fertileLandButton.setOnAction((e) -> this.onFertileLandButtonClick(e, listeResearch.FertileLand2, eco));
+    		if (setEconomy(eco, listeResearch.FertileLand2)) {
+    			setLabelsInfos(fertileLandButton, fertileLandInfosCost, fertileLandInfosProd, fertileLandInfosVBox, listeResearch.FertileLand3);
+    		}
     	} else {
-    		this.fertileLandButton.setOnAction((e) -> this.onFertileLandButtonClick(e, listeResearch.FertileLand3, eco));
-    		
-    		this.fertileLandButton.setBackground(new Background(new BackgroundImage(
-					new Image(this.getClass().getResourceAsStream("/resources/images/backgrounds/greyScreen.jpg")),
-					BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
-					new BackgroundSize(0, 0, false, false, false, true))));
-			this.fertileLandButton.setTextFill(Color.WHITE);
-    		
-    		this.fertileLandButton.setDisable(true);
+    		if (setEconomy(eco, listeResearch.FertileLand3)) {
+    			this.fertileLandButton.setBackground(new Background(new BackgroundImage(
+    					new Image(this.getClass().getResourceAsStream("/resources/images/backgrounds/greyScreen.jpg")),
+    					BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+    					new BackgroundSize(0, 0, false, false, false, true))));
+    			this.fertileLandButton.setTextFill(Color.WHITE);
+        		
+        		this.fertileLandButton.setDisable(true);
+    		}
     	}
 	}
+	
+	private boolean setEconomy(Economy eco, listeResearch research) {
+		if (eco.oxygeneNumber > research.oxygeneCost && eco.diazoteNumber > research.diazoteCost && eco.hydrogeneNumber > research.hydrogeneCost && eco.carboneNumber > research.carboneCost) {
+			eco.oxygeneNumber -= research.oxygeneCost;
+			eco.diazoteNumber -= research.diazoteCost;
+			eco.hydrogeneNumber -= research.hydrogeneCost;
+			eco.carboneNumber -= research.carboneCost;
 
-	private void onFertileLandButtonClick(ActionEvent e, listeResearch fertileLand, Economy eco) {
-		if (eco.oxygeneNumber > fertileLand.oxygeneCost && eco.diazoteNumber > fertileLand.diazoteCost && eco.hydrogeneNumber > fertileLand.hydrogeneCost && eco.carboneNumber > fertileLand.carboneCost) {
-			eco.oxygeneNumber -= fertileLand.oxygeneCost;
-			eco.diazoteNumber -= fertileLand.diazoteCost;
-			eco.hydrogeneNumber -= fertileLand.hydrogeneCost;
-			eco.carboneNumber -= fertileLand.carboneCost;
-
-			eco.oxygeneProdSeconde += fertileLand.oxygeneProd;
-			eco.diazoteProdSeconde += fertileLand.diazoteProd;
-			eco.hydrogeneProdSeconde += fertileLand.hydrogeneProd;
-			eco.carboneProdSeconde += fertileLand.carboneProd;
+			eco.oxygeneProdSeconde += research.oxygeneProd;
+			eco.diazoteProdSeconde += research.diazoteProd;
+			eco.hydrogeneProdSeconde += research.hydrogeneProd;
+			eco.carboneProdSeconde += research.carboneProd;
 			
-			System.out.println(fertileLand.nameResearch);
+			System.out.println(research.nameResearch + " has been purchased !");
+			
+			return true;
+		} else {
+			System.out.println("Error, the user doesn't have enough resources to purchase " + research.nameResearch + " !");
+			
+			return false;
 		}
 	}
+	
+	
+	
 
 	public enum listeResearch {
     	FertileLand1("Terre fertile niv 1", 500, 450, 200, 350, 100, 0, 0, 100),
