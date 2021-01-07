@@ -1,11 +1,7 @@
 package com.utbm.projet;
 
-import java.awt.List;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.utbm.projet.Culture.listeCultures;
-import com.utbm.projet.Population.listePopulations;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;

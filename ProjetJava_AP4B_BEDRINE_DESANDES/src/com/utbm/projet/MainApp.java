@@ -1,10 +1,6 @@
 package com.utbm.projet;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,7 +11,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import javafx.util.Duration;
 
 public class MainApp extends Application {
 
@@ -93,7 +88,7 @@ public class MainApp extends Application {
 
 	private void setTopComponents() {
 		Time time = new Time();
-		eco.refreshEconomy(eco, clt, res);
+		eco.refreshEconomy(eco, clt, res, med);
 		pop.refreshPopulation(pop,eco);
 
 		// Resources, Time and planet info in the VBox presentation

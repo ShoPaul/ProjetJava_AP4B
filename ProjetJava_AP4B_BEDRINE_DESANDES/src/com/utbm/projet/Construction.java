@@ -5,25 +5,6 @@ import java.util.Map;
 
 public class Construction {
 
-    public Construction() {
-    }
-
-    public void addBuilding() {
-    	
-    }
-
-    public void removeBuilding() {
-    }
-
-    public void upgradeBuilding() {
-    }
-
-    public void isBuildingAvailable() {
-    }
-
-    public void cancelConstruction() {
-    }
-
     public enum listeConstructions {
     	House("C", 20, "O", -20),
     	Mine("C", 40, "H", 30);

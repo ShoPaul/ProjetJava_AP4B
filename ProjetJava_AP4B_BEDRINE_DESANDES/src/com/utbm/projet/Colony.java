@@ -9,7 +9,8 @@ import javafx.stage.Stage;
 
 public class Colony {
 
-    private String colonyName;
+    @SuppressWarnings("unused")
+	private String colonyName;
     public static Stage colonyStage = new Stage();
     public static Button colonyButton;    
     
