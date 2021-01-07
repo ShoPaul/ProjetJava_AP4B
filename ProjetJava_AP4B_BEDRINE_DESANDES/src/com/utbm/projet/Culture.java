@@ -29,8 +29,8 @@ public class Culture {
 	private Scene cultureScene = new Scene(cultureVbox, 400, 600);
 
 	private Button vegetablesButton = new Button(listeCultures.Vegetables.nameResearch);
-	private Label vegetablesInfosCost = new Label("test");
-	private Label vegetablesInfosProd = new Label("test");
+	private Label vegetablesInfosCost = new Label();
+	private Label vegetablesInfosProd = new Label();
 	private VBox vegetablesInfosVBox = new VBox(20);
 	private HBox vegetablesHBox = new HBox(20);
 
@@ -135,7 +135,8 @@ public class Culture {
 	}
 
 	public enum listeCultures {
-		Vegetables("Légumes", 20, 20, 0, 10, 10, 5, 5, 0), Fruits("Fruits", 100, 50, 0, 15, 22, 5, 10, 2);
+		Vegetables("Légumes", 20, 20, 0, 10, 10, 5, 5, 0), 
+		Fruits("Fruits", 100, 50, 0, 15, 22, 5, 10, 2);
 
 		private static final Map<String, listeCultures> BY_NAME = new HashMap<>();
 		private static final Map<Integer, listeCultures> BY_OX_COST = new HashMap<>();
