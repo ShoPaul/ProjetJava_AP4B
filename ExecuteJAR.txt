@@ -1,2 +1,4 @@
 Executez la commande suivante sur la console windows :
 java --module-path "pathtojavafxlib" --add-modules javafx.controls,javafx.fxml -jar JeuDeGestion.jar
+
+exemple pour "pathtojavafxlib" : "C:\Users\pauls\OneDrive\Bureau\Programmation\javafx-sdk-15.0.1\lib"
