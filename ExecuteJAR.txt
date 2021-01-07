@@ -1,2 +1,2 @@
 Executez la commande suivante sur la console windows :
-java --module-path "\JeuDeGestion_lib" --add-modules javafx.controls,javafx.fxml -jar JeuDeGestion.jar
+java --module-path "pathtojavafxlib" --add-modules javafx.controls,javafx.fxml -jar JeuDeGestion.jar
