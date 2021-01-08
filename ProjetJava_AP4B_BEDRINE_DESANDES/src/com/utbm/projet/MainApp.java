@@ -26,7 +26,7 @@ public class MainApp extends Application {
 	private Population pop = new Population();
 	private Planet planet = new Planet();
 	private Faction faction = new Faction();
-	private Economy eco = new Economy(50, 50, 50, 50);
+	private Economy eco = new Economy(500000, 500000, 500000, 500000);
 
 	private Scene scene1 = new Scene(planet.planetChoiceVBox, 1200, 800);
 	private Scene scene2 = new Scene(faction.factionBorder, 1200, 800);
